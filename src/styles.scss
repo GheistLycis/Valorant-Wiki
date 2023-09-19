@@ -1,1 +1,61 @@
 @import 'styles/colors';
+
+// VARIABLES
+$gaps: 0, 5px, 10px, 15px, 20px, 30px, 40px, 50px;
+$weights: 100, 200, 300, 400, 500, 600, 700, 800, 900;
+
+@font-face {
+    font-family: primary-font;
+    src: url('assets/fonts/Overpass-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: secondary-font;
+    src: url('assets/fonts/Tungsten.ttf');
+}
+
+@each $color, $value in $palette {
+    .text-#{$color} {
+        color: $value;
+    }
+
+    .bg-#{$color} {
+        background-color: $value;
+    }
+}
+
+@each $color, $value in $filter-palette {
+    .filter-#{$color} {
+        filter: $value;
+    }
+}
+
+@each $gap in $gaps {
+    .gap-#{$gap} {
+        gap: $gap;
+    }
+}
+
+@each $weight in $weights {
+    .weight-#{$weight} {
+        font-weight: $weight;
+    }
+}
+
+body {
+    font-family: primary-font;
+    color: $white;
+    height: 100vh;
+    overflow-y: hidden;
+    width: 100%;
+    caret-color: $red;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.font-secondary {
+    font-family: secondary-font;
+}
+

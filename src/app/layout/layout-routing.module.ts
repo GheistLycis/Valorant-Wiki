@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '../pages/home/home.component';
 import { LayoutComponent } from './layout.component';
+import { AgentsComponent } from '../pages/agents/agents.component';
+import { WeaponsComponent } from '../pages/weapons/weapons.component';
 
 const routes: Routes = [
   {
@@ -16,7 +18,15 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
-      }
+      },
+      {
+        path: 'agents',
+        component: AgentsComponent,
+      },
+      {
+        path: 'weapons',
+        component: WeaponsComponent,
+      },
     ]
   }
 ]
