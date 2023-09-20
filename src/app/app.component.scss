@@ -1,0 +1,22 @@
+@import '/src/styles/colors.scss';
+
+svg {
+    position: absolute;
+
+    &#top-wave {
+        top: 0;
+
+        path {
+            fill: $dark-gray;
+            fill-opacity: 0.5;
+        }
+    }
+
+    &#bottom-wave {
+        bottom: 0;
+
+        path {
+            fill: $red;
+        }
+    }
+}

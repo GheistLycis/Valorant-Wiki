@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-
+  navItems = [
+    {
+      title: 'Agents',
+      path: 'agents'
+    },
+    {
+      title: 'Weapons',
+      path: 'weapons'
+    },
+  ]
 }

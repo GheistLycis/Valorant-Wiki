@@ -1,9 +1,15 @@
-<nav>
-    <div class="logo">
-        LOGO
-    </div>
-
-    <div class="items">
-        ITEMS
+<nav class="d-flex justify-content-center w-100">
+    <div class="d-flex justify-content-between w-75 h-100">
+        <div class="logo d-flex justify-content-center align-items-center h-100">
+            LOGO
+        </div>
+    
+        <div class="items d-flex gap-50px h-100">
+            <div *ngFor="let item of navItems" class="item-container d-flex justify-content-center align-items-center h-100 px-3">
+                <a [routerLink]="item.path" routerLinkActive="active">
+                    {{ item.title }}
+                </a>
+            </div>
+        </div>
     </div>
 </nav>

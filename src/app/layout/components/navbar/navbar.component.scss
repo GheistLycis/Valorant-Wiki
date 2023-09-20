@@ -1,0 +1,23 @@
+@import '/src/styles/colors';
+@import '/src/styles/utils';
+
+nav {
+    @include glass($light-gray, 0.1, 2px);
+    height: 50px;
+    box-shadow: 0 0 2px 1px rgba($black, 0.2);
+    transition-duration: .2s;
+
+    &:hover {
+        @include glass($light-gray, 0.15, 8px);
+        height: 70px;
+    }
+
+    .item-container {
+        transition-duration: .5s;
+
+        &:hover,
+        &:has(a.active) {
+            background-color: $red;
+        }
+    }
+}

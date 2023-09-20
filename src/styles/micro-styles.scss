@@ -1,0 +1,60 @@
+// DEFINING VARIABLES
+$palette: (
+    "red": $red,
+    "lime": $lime, 
+    "green": $green,
+    "black": $black, 
+    "dark-gray": $dark-gray, 
+    "light-gray": $light-gray, 
+    "white": $white,
+);
+
+$filter-palette: (
+    "filter-red": $filter-red,
+    "filter-lime": $filter-lime, 
+    "filter-green": $filter-green, 
+    "filter-black": $filter-black, 
+    "filter-dark-gray": $filter-dark-gray, 
+    "filter-light-gray": $filter-light-gray, 
+    "filter-white": $filter-white,
+);
+
+$gaps: 0, 5px, 10px, 15px, 20px, 30px, 40px, 50px;
+
+@font-face {
+    font-family: primary-font;
+    src: url('/src/assets/fonts/Overpass-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: secondary-font;
+    src: url('/src/assets/fonts/Tungsten.ttf');
+}
+
+
+// STYLES
+@each $color, $value in $palette {
+    .text-#{$color} {
+        color: $value;
+    }
+
+    .bg-#{$color} {
+        background-color: $value;
+    }
+}
+
+@each $color, $value in $filter-palette {
+    .filter-#{$color} {
+        filter: $value;
+    }
+}
+
+@each $gap in $gaps {
+    .gap-#{$gap} {
+        gap: $gap;
+    }
+}
+
+.font-secondary {
+    font-family: secondary-font;
+}
