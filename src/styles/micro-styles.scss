@@ -22,24 +22,24 @@ $filter-palette: (
 $gaps: 0, 5px, 10px, 15px, 20px, 30px, 40px, 50px;
 
 @font-face {
-    font-family: primary-font;
-    src: url('/src/assets/fonts/Overpass-VariableFont_wght.ttf');
+    font-family: primary;
+    src: url('/src/assets/fonts/Overpass-VariableFont_wght');
 }
 
 @font-face {
-    font-family: secondary-font;
-    src: url('/src/assets/fonts/Tungsten.ttf');
+    font-family: secondary;
+    src: url('/src/assets/fonts/Tungsten');
 }
 
 
 // STYLES
 @each $color, $value in $palette {
     .text-#{$color} {
-        color: $value;
+        color: $value !important;
     }
 
     .bg-#{$color} {
-        background-color: $value;
+        background-color: $value !important;
     }
 }
 
@@ -56,5 +56,9 @@ $gaps: 0, 5px, 10px, 15px, 20px, 30px, 40px, 50px;
 }
 
 .font-secondary {
-    font-family: secondary-font;
+    font-family: secondary;
+}
+
+.pointer {
+    cursor: pointer;
 }

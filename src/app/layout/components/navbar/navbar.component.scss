@@ -1,23 +1,39 @@
 @import '/src/styles/colors';
 @import '/src/styles/utils';
 
+$nav-height: 50px;
+
 nav {
     @include glass($light-gray, 0.1, 2px);
-    height: 50px;
+    height: $nav-height;
     box-shadow: 0 0 2px 1px rgba($black, 0.2);
     transition-duration: .2s;
 
     &:hover {
-        @include glass($light-gray, 0.15, 8px);
-        height: 70px;
+        @include glass($light-gray, 0.1, 8px);
+        height: $nav-height + 10px;
     }
 
-    .item-container {
+    img {
+        transition-duration: .2s;
+    }
+
+    .nav-item-container {
+        width: 100px;
         transition-duration: .5s;
 
         &:hover,
-        &:has(a.active) {
+        &.active {
             background-color: $red;
         }
+    }
+
+    .seeking-box {
+        width: 100px;
+        transform: skew(-30deg);
+        background-color: rgba($black, 0.5);
+        z-index: -1;
+        left: 90vw;
+        transition: height .2s, left .5s;
     }
 }
