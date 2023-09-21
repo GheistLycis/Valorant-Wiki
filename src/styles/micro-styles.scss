@@ -19,20 +19,16 @@ $filter-palette: (
     "filter-white": $filter-white,
 );
 
+$font-weights: (
+    'light': 200,
+    'medium': 500,
+    'bold': 700,
+);
+
 $gaps: 0, 5px, 10px, 15px, 20px, 30px, 40px, 50px;
 
-@font-face {
-    font-family: primary;
-    src: url('/src/assets/fonts/Overpass-VariableFont_wght');
-}
 
-@font-face {
-    font-family: secondary;
-    src: url('/src/assets/fonts/Tungsten');
-}
-
-
-// STYLES
+// COLORS
 @each $color, $value in $palette {
     .text-#{$color} {
         color: $value !important;
@@ -49,16 +45,28 @@ $gaps: 0, 5px, 10px, 15px, 20px, 30px, 40px, 50px;
     }
 }
 
+
+// FLEX BOX
 @each $gap in $gaps {
     .gap-#{$gap} {
         gap: $gap;
     }
 }
 
-.font-secondary {
+
+// TEXT
+.ff-secondary {
     font-family: secondary;
 }
 
+@each $name, $weight in $font-weights {
+    .fw-#{$name} {
+        font-weight: $weight;
+    }
+}
+
+
+// GENERAL
 .pointer {
     cursor: pointer;
 }

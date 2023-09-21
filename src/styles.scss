@@ -1,6 +1,26 @@
 @import 'styles/colors';
 @import 'styles/micro-styles';
 
+@font-face {
+    font-family: primary;
+    src: url(https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800);
+}
+
+@font-face {
+    font-family: secondary;
+    src: url(assets/fonts/Tungsten/Tungsten-Bold.otf);
+    font-weight: 700;
+}
+@font-face {
+    font-family: secondary;
+    src: url(assets/fonts/Tungsten/Tungsten-Medium.otf);
+    font-weight: 500;
+}
+@font-face {
+    font-family: secondary;
+    src: url(assets/fonts/Tungsten/Tungsten-Light.otf);
+    font-weight: 200;
+}
 
 html,
 body {
@@ -10,7 +30,7 @@ body {
 }
 
 body {
-    font-family: secondary;
+    font-family: primary;
     color: $white;
     height: 100vh;
     overflow-y: hidden;

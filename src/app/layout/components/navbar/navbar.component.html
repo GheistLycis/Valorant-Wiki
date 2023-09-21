@@ -1,7 +1,7 @@
 <nav class="d-flex justify-content-center w-100 position-relative">
     <div class="d-flex justify-content-between w-75 h-100">
         <div routerLink=""  class="logo d-flex justify-content-center align-items-center h-100 pointer">
-            <img src="assets/valorant-logo.png" class="h-100">
+            <img src="assets/icons/valorant-logo.png" class="h-100">
         </div>
     
         <div class="items d-flex gap-50px h-100">
@@ -10,7 +10,7 @@
                 *ngFor="let navItem of navItems" 
                 [routerLink]="navItem.path" 
                 routerLinkActive="active"
-                class="nav-item-container h-100 pointer d-flex justify-content-center align-items-center font-secondary text-uppercase">
+                class="nav-item-container h-100 pointer d-flex justify-content-center align-items-center ff-secondary fw-bold text-uppercase">
                     {{ navItem.title }}
             </div>
 
