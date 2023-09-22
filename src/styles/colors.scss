@@ -1,6 +1,6 @@
 $red: #FF4A59;
 $yellow: #FF4;
-$yellow: #FF4A;
+$dark-yellow: #FF4A;
 $black: #111;
 $dark-gray: #292929;
 $light-gray: #ECE8E1;
@@ -8,7 +8,7 @@ $white: #F9F9F9;
 
 $filter-red: invert(33%) sepia(82%) saturate(1741%) hue-rotate(332deg) brightness(113%) contrast(101%);
 $filter-yellow: invert(92%) sepia(7%) saturate(3552%) hue-rotate(360deg) brightness(109%) contrast(107%);
-$filter-yellow: invert(92%) sepia(59%) saturate(862%) hue-rotate(329deg) brightness(118%) contrast(102%);
+$filter-dark-yellow: invert(92%) sepia(59%) saturate(862%) hue-rotate(329deg) brightness(118%) contrast(102%);
 $filter-black: invert(0%) sepia(0%) saturate(6263%) hue-rotate(165deg) brightness(86%) contrast(87%);
 $filter-dark-gray: invert(17%) sepia(0%) saturate(0%) hue-rotate(157deg) brightness(90%) contrast(97%);
 $filter-light-gray: invert(93%) sepia(5%) saturate(740%) hue-rotate(325deg) brightness(107%) contrast(85%);
