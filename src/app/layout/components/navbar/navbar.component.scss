@@ -1,7 +1,7 @@
 @import '/src/styles/colors';
 @import '/src/styles/utils';
 
-$nav-height: 50px;
+$nav-height: 40px;
 
 nav {
     @include glass($light-gray, 0.1, 2px);
