@@ -1,12 +1,20 @@
 @import '/src/styles/colors';
-@import '/src/styles/utils';
 
 footer {
-    @include glass($light-gray, 0.2, 2px);
+    background: linear-gradient(90deg, rgba(transparent, 0.5) 30%, rgba($red, 0.8) 100%);
     height: 50px;
-    transition-duration: .2s;
+    width: 120%;
+    overflow-x: hidden;
+    float: right;
+    transition: background .5s;
 
     &:hover {
-        @include glass($light-gray, 0.2, 8px);
+        background-position: 150px;
+    }
+
+    svg {
+        fill: $white;
+        stroke: $white;
+        width: 35px;
     }
 }
