@@ -1,5 +1,7 @@
-<app-navbar></app-navbar>
-<div id="app-container">
-    <router-outlet></router-outlet>
+<div class="vh-100 d-flex flex-column justify-content-between">
+    <app-navbar/>
+    <div class="w-100 h-100 px-3 py-5">
+        <router-outlet/>
+    </div>
+    <app-footer/>
 </div>
-<app-footer></app-footer>

@@ -2,6 +2,7 @@
 
 svg {
     position: absolute;
+    z-index: -10;
 
     &#top-wave {
         top: 0;

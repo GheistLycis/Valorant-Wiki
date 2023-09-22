@@ -1,0 +1,12 @@
+@import '/src/styles/colors';
+@import '/src/styles/utils';
+
+footer {
+    @include glass($light-gray, 0.2, 2px);
+    height: 50px;
+    transition-duration: .2s;
+
+    &:hover {
+        @include glass($light-gray, 0.2, 8px);
+    }
+}
