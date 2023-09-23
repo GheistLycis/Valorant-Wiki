@@ -37,4 +37,12 @@ body {
     width: 100%;
     caret-color: $red;
     background-color: $black;
+
+    *::-moz-selection {
+        background: $red;
+    }
+
+    *::selection {
+        background: $red;
+    }
 }
