@@ -28,9 +28,9 @@ export class NavbarComponent implements AfterViewInit {
       nativeElement.addEventListener('mouseover', () => {
         this.seekingBox.nativeElement.style.left = nativeElement.offsetLeft + 10 + 'px'
 
-        items.forEach((item) => {
+        items.forEach(item => {
           if(item.nativeElement != nativeElement) {
-            item.nativeElement.style.opacity = '0.5'
+            item.nativeElement.style.opacity = '0.3'
           }
         })
       })
@@ -38,7 +38,7 @@ export class NavbarComponent implements AfterViewInit {
       nativeElement.addEventListener('mouseout', () => {
         this.seekingBox.nativeElement.style.left = '90vw'
 
-        items.forEach((item) => {
+        items.forEach(item => {
           if(item.nativeElement != nativeElement) {
             item.nativeElement.style.opacity = '1'
           }
