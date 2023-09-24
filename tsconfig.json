@@ -25,7 +25,7 @@
       "dom"
     ],
     "paths": {
-      // "tslib" : ["node_modules/tslib/tslib.d.ts"],
+      "tslib" : ["node_modules/tslib/tslib.d.ts"],
 
       // SHARED
       "@classes/*": ["src/app/classes/*"],

@@ -2,3 +2,43 @@
     background: rgba($color, $alpha);
     backdrop-filter: blur($blur);
 }
+
+@mixin slash-effect($color, $size, $space) {
+    position: relative;
+
+    &::before,
+    &::after {
+        content: '/';
+        position: absolute;
+        top: -25%;
+        left: 0;
+        color: $color;
+        font-size: $size;
+        opacity: 0;
+        transform: translateX(5px);
+        transition-duration: .3s;
+    }
+
+    &::before {
+        transition-duration: .4s;
+    }
+
+    &::after {
+        transition-duration: .2s;
+    }
+
+    &:hover {
+        &::before,
+        &::after {
+            opacity: 1;
+        }
+
+        &::before {
+            transform: translateX(-10px -$space);
+        }
+
+        &::after {
+            transform: translateX(-10px);
+        }
+    }
+}

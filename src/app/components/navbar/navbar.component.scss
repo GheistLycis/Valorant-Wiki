@@ -26,6 +26,10 @@ nav {
         width: 100px;
         transition-duration: .5s;
 
+        span {
+            @include slash-effect($light-gray, 30px, 5px);
+        }
+
         &:hover,
         &.active {
             background-color: $red;
