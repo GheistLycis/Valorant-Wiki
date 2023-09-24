@@ -6,7 +6,8 @@ $nav-height: 40px;
 nav {
     @include glass($light-gray, 0.1, 2px);
     height: $nav-height;
-    box-shadow: 0 0 2px 1px rgba($black, 0.2);
+    border: 1px solid $dark-red;
+    box-shadow: 0 0 5px 5px rgba($dark-red, 0.4);
     font-size: 20px;
     letter-spacing: 1.5px;
     transition-duration: .2s;
@@ -14,6 +15,7 @@ nav {
     &:hover {
         @include glass($light-gray, 0.1, 8px);
         height: $nav-height + 10px;
+        box-shadow: 0 0 10px 15px rgba($dark-red, 0.8);
     }
 
     img {

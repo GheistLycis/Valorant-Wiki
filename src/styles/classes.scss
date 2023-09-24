@@ -1,8 +1,8 @@
 // DEFINING VARIABLES
 $palette: (
-    "red": $red,
-    "yellow": $yellow, 
-    "dark-yellow": $dark-yellow,
+    "light-red": $light-red,
+    "red": $red, 
+    "dark-red": $dark-red,
     "black": $black, 
     "dark-gray": $dark-gray, 
     "light-gray": $light-gray, 
@@ -10,9 +10,9 @@ $palette: (
 );
 
 $filter-palette: (
-    "filter-red": $filter-red,
-    "filter-yellow": $filter-yellow, 
-    "filter-dark-yellow": $filter-dark-yellow, 
+    "filter-light-red": $filter-light-red,
+    "filter-red": $filter-red, 
+    "filter-dark-red": $filter-dark-red, 
     "filter-black": $filter-black, 
     "filter-dark-gray": $filter-dark-gray, 
     "filter-light-gray": $filter-light-gray, 
