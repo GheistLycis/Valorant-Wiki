@@ -3,7 +3,7 @@
     backdrop-filter: blur($blur);
 }
 
-@mixin slash-effect($color, $size, $space) {
+@mixin slash-effect($color, $size, $space: 5px) {
     position: relative;
 
     &::before,

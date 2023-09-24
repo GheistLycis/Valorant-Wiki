@@ -9,6 +9,7 @@ import { map } from 'rxjs';
 })
 export class ApiService {
   apiUrl = 'https://valorant-api.com/v1'
+  mediaApiUrl = 'https://media.valorant-api.com'
   defaultLang: apiLangs = 'en-US'
 
   constructor(private http: HttpClient) {}
@@ -23,5 +24,11 @@ export class ApiService {
     return this.http
       .get<Res<T[]>>(`${this.apiUrl}/${endpoint}?language=${language}`)
       .pipe(map(({ data }) => data))
+  }
+
+  getMedia(endpoint: string) {
+    return this.http
+      .get(endpoint, { responseType: 'blob' })
+      .pipe(map(blob => URL.createObjectURL(blob)))
   }
 }

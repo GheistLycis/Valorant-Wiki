@@ -18,4 +18,8 @@ export class WeaponService {
   list(language?: apiLangs) {
     return this.api.list<Weapon>(this.endpoint, language)
   }
+
+  getMedia(path: string) {
+    return this.api.getMedia(path)
+  }
 }
