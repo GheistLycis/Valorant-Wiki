@@ -28,14 +28,15 @@
       // "tslib" : ["node_modules/tslib/tslib.d.ts"],
 
       // SHARED
-      "@classes/*": ["src/app/shared/classes/*"],
-      "@components/*": ["src/app/shared/components/*"],
-      "@directives/*": ["src/app/shared/directives/*"],
-      "@DTOs/*": ["src/app/shared/DTOs/*"],
-      "@enums/*": ["src/app/shared/enums/*"],
-      "@interfaces/*": ["src/app/shared/interfaces/*"],
-      "@pipes/*": ["src/app/shared/pipes/*"],
-      "@services/*": ["src/app/shared/services/*"],
+      "@classes/*": ["src/app/classes/*"],
+      "@components/*": ["src/app/components/*"],
+      "@directives/*": ["src/app/directives/*"],
+      "@DTOs/*": ["src/app/DTOs/*"],
+      "@enums/*": ["src/app/enums/*"],
+      "@interfaces/*": ["src/app/interfaces/*"],
+      "@pipes/*": ["src/app/pipes/*"],
+      "@services/*": ["src/app/services/*"],
+      "@types/*": ["src/app/types/*"],
     },
   },
   "angularCompilerOptions": {
