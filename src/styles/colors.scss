@@ -1,14 +1,14 @@
-$light-red: #FD4556;
-$red: #BD3944;
 $dark-red: #53212B;
+$red: #BD3944;
+$light-red: #FD4556;
 $black: #111;
 $dark-gray: #292929;
 $light-gray: #ECE8E1;
 $white: #F9F9F9;
 
-$filter-light-red: invert(51%) sepia(63%) saturate(6469%) hue-rotate(332deg) brightness(107%) contrast(98%);
-$filter-red: invert(30%) sepia(54%) saturate(2526%) hue-rotate(332deg) brightness(79%) contrast(85%);
 $filter-dark-red: invert(14%) sepia(59%) saturate(694%) hue-rotate(298deg) brightness(94%) contrast(92%);
+$filter-red: invert(30%) sepia(54%) saturate(2526%) hue-rotate(332deg) brightness(79%) contrast(85%);
+$filter-light-red: invert(51%) sepia(63%) saturate(6469%) hue-rotate(332deg) brightness(107%) contrast(98%);
 $filter-black: invert(0%) sepia(0%) saturate(6263%) hue-rotate(165deg) brightness(86%) contrast(87%);
 $filter-dark-gray: invert(17%) sepia(0%) saturate(0%) hue-rotate(157deg) brightness(90%) contrast(97%);
 $filter-light-gray: invert(93%) sepia(5%) saturate(740%) hue-rotate(325deg) brightness(107%) contrast(85%);

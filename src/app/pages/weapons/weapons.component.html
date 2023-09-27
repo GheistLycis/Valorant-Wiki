@@ -1,1 +1,11 @@
-<img [src]="weaponImg$ | async" width="100px">
+<ng-container *ngIf="weapons$ | async as weapons">
+    <div *ngIf="weaponsIcons$ | async as icons" class="row">
+        <div *ngFor="let weapon of weapons; index as i" class="weapon d-flex col-sm-12 col-md-6 col-lg-4">
+            <img [src]="icons[i]" class="h-100 w-50 object-fit-contain">
+            <div class="ff-secondary">
+                <h3>{{ weapon.displayName }}</h3>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
