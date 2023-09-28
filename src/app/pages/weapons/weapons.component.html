@@ -1,11 +1,17 @@
-<ng-container *ngIf="weapons$ | async as weapons">
-    <div *ngIf="weaponsIcons$ | async as icons" class="row">
-        <div *ngFor="let weapon of weapons; index as i" class="weapon d-flex col-sm-12 col-md-6 col-lg-4">
-            <img [src]="icons[i]" class="h-100 w-50 object-fit-contain">
-            <div class="ff-secondary">
-                <h3>{{ weapon.displayName }}</h3>
-            </div>
+<div class="row">
+    <div *ngFor="let data of weaponsData$ | async" class="weapon-card d-flex gap-10px col-sm-12 col-md-6 col-lg-4">
+        <ngb-carousel class="h-100 w-50">
+            <ng-template ngbSlide *ngFor="let skin of data.skins">
+                <div *ngIf="skin.src$ | async as src" class="picsum-img-wrapper">
+                    <img [src]="src" loading="lazy" class="h-100 w-100 object-fit-contain">
+                </div>
+                <div class="carousel-caption">
+                    <p>{{ skin.name }}</p>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+        <div class="h-100 w-50 ff-secondary">
+            <h3>{{ data.weapon.displayName }}</h3>
         </div>
     </div>
-</ng-container>
-
+</div>

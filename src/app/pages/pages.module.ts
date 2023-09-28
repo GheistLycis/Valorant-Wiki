@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { AgentsComponent } from './agents/agents.component';
 import { WeaponsComponent } from './weapons/weapons.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -17,7 +18,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    NgbCarouselModule,
   ]
 })
 export class PagesModule { }

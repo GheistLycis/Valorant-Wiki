@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ErrorsInterceptor } from './interceptors/errors.interceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ErrorsInterceptor } from './interceptors/errors.interceptor';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
     ToastrModule.forRoot({
       timeOut: 5000,
       preventDuplicates: true,
