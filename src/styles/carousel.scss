@@ -1,10 +1,50 @@
-.carousel-inner {
-    position: static;
-    height: 100%;
-
-    .carousel-item {
+ngb-carousel {
+    .carousel-inner {
         position: static;
-        padding-top: 60px;
-        transition-duration: .4s;
+        height: 100%;
+    
+        .carousel-item {
+            position: static;
+            padding-top: 60px;
+            transition-duration: .4s;
+        }
+    }
+
+    .carousel-control-next {
+        border-radius: 24px;
+
+        transition-duration: .3s;
+
+        &:hover {
+            background-color: rgba($dark-gray, 0.4);
+
+            .carousel-control-next-icon {
+                opacity: 1;
+            }
+        }
+
+        .carousel-control-next-icon {
+            opacity: 0.3;
+            transition-duration: .3s;
+        }
+    }
+
+    .carousel-control-prev {
+        border-radius: 24px;
+
+        transition-duration: .3s;
+
+        &:hover {
+            background-color: rgba($dark-gray, 0.4);
+
+            .carousel-control-prev-icon {
+                opacity: 1;
+            }
+        }
+
+        .carousel-control-prev-icon {
+            opacity: 0.3;
+            transition-duration: .3s;
+        }
     }
 }

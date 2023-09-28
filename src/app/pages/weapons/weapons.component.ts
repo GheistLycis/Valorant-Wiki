@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { Weapon } from '@interfaces/Weapon';
 import { WeaponData } from '@interfaces/WeaponData';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { StorageService } from '@services/storage.service';
 import { WeaponService } from '@services/weapon.service';
-import { Observable, map, tap, of, iif } from 'rxjs';
+import { Observable, map, tap, of, iif, catchError } from 'rxjs';
 
 
 @Component({
@@ -19,9 +20,13 @@ export class WeaponsComponent {
     private storageService: StorageService,
     private carousel: NgbCarouselConfig,
   ) {
+    const getWeaponMedia$ = (path: string) => this.weaponService.getMedia(path).pipe(
+      tap(img => this.storageService.setItem(path, img)),
+    )
+
     this.carousel.interval = 0
     this.carousel.showNavigationIndicators = false
-
+    
     this.weaponsData$ = this.weaponService.list().pipe(
       map(weapons => weapons.map(weapon => {
           const obj: WeaponData = { weapon, skins: [] }
@@ -30,10 +35,10 @@ export class WeaponsComponent {
               name: displayName, 
               src$: iif(
                   () => !this.storageService.getItem(displayIcon),
-                  this.weaponService.getMedia(displayIcon).pipe(
-                    tap(img => this.storageService.setItem(displayIcon, img)),
+                  getWeaponMedia$(displayIcon),
+                  of(this.storageService.getItem<string>(displayIcon)!).pipe(
+                    catchError(() => getWeaponMedia$(displayIcon)) // not catching localStorage fetching error (ERR_FILE_NOT_FOUND)
                   ),
-                  of(this.storageService.getItem<string>(displayIcon)!),
                 )
             })
           )
@@ -42,5 +47,9 @@ export class WeaponsComponent {
         }
       )),
     )
+  }
+
+  addToComparison(weaponId: Weapon['uuid']): void {
+
   }
 }

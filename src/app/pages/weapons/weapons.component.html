@@ -1,25 +1,71 @@
 <div class="row">
-    <div *ngFor="let data of weaponsData$ | async" class="weapon-card position-relative col-sm-12 col-md-6 col-lg-4 p-3">
-        <div class="overlay d-flex flex-column justify-content-between position-absolute p-3">
+    <div 
+        *ngFor="let data of weaponsData$ | async" 
+        (click)="addToComparison(data.weapon.uuid)"
+        class="weapon-card position-relative col-sm-12 col-md-6 col-lg-4 p-3 ff-secondary pointer">
+        <div class="overlay d-flex flex-column justify-content-between position-absolute p-2">
             <div class="d-flex justify-content-between">
-                <h3 class="ff-secondary">
-                    {{ data.weapon.displayName }}
-                </h3>
-                <div class="info">
-                    Teste
+                <h3 class="text-uppercase">{{ data.weapon.displayName }}</h3>
+                <div class="info d-flex flex-column justify-content-between gap-10px">
+                    <div>
+                        <h4 class="text-red">
+                            DAMAGE
+                            ({{ data.weapon.weaponStats?.damageRanges?.[0]?.rangeStartMeters }}m - 
+                            {{ data.weapon.weaponStats?.damageRanges?.[0]?.rangeEndMeters }}m)
+                        </h4>
+                        <div class="d-flex justify-content-between w-100">
+                            <div>
+                                <h4>{{ data.weapon.weaponStats?.damageRanges?.[0]?.headDamage | number:'.2-2' }}</h4>
+                                <h5>HEAD</h5>
+                            </div>
+                            <div>
+                                <h4>{{ data.weapon.weaponStats?.damageRanges?.[0]?.bodyDamage | number:'.2-2' }}</h4>
+                                <h5>BODY</h5>
+                            </div>
+                            <div>
+                                <h4>{{ data.weapon.weaponStats?.damageRanges?.[0]?.legDamage | number:'.2-2' }}</h4>
+                                <h5>LEG</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-red">GENERAL</h4>
+                        <div class="d-flex justify-content-between w-100">
+                            <div>
+                                <h4>{{ data.weapon.category.substring(21) }}</h4>
+                                <h5>CATEGORY</h5>
+                            </div>
+                            <div>
+                                <h4>{{ data.weapon.weaponStats?.fireRate }}</h4>
+                                <h5>FIRE RATE</h5>
+                            </div>
+                            <div>
+                                <h4>{{ data.weapon.weaponStats?.magazineSize }}</h4>
+                                <h5>MAGAZINE SIZE</h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                {{ data.weapon.shopData?.cost }}
+                <h3>$ {{ data.weapon.shopData?.cost }}</h3>
             </div>
         </div>
-        <ngb-carousel class="carousel h-100 w-100">
+
+        <ngb-carousel class="h-100 w-100">
             <ng-template ngbSlide *ngFor="let skin of data.skins; index as i">
                 <div class="h-100 w-100">
-                    <img *ngIf="skin.src$ | async as src" [src]="src" class="w-75 mh-100" [class]="data.weapon.displayName">
-                    <small class="position-absolute bottom-0 start-0">
-                        {{ skin.name }} ({{ i+1 }}/{{ data.skins.length }})
-                    </small>
+                    <img 
+                        *ngIf="skin.src$ | async as src" 
+                        [src]="src" 
+                        class="weapon-img w-75 mh-100" 
+                        [class]="data.weapon.displayName">
+                    <h5 class="skin-name position-absolute">
+                        {{ skin.name }}
+                    </h5>
+                    <h5 class="skins-count position-absolute">
+                        ({{ i+1 }}/{{ data.skins.length }})
+                    </h5>
                 </div>
             </ng-template>
         </ngb-carousel>

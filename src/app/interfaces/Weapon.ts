@@ -7,8 +7,8 @@ export interface Weapon {
     killStreamIcon: string
     assetPath: string
     weaponStats: {
-        fireRate: number
-        magazineSize: number
+        fireRate?: number
+        magazineSize?: number
         runSpeedMultiplier: number
         equipTimeSeconds: number
         reloadTimeSeconds: number
@@ -33,7 +33,7 @@ export interface Weapon {
             shotgunPelletCount: number
             burstDistance: number
         }
-        damageRanges: {
+        damageRanges?: {
             rangeStartMeters: number
             rangeEndMeters: number
             headDamage: number
