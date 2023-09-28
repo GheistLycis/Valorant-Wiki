@@ -1,0 +1,10 @@
+.carousel-inner {
+    position: static;
+    height: 100%;
+
+    .carousel-item {
+        position: static;
+        padding-top: 60px;
+        transition-duration: .4s;
+    }
+}

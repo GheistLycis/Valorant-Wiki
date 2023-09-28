@@ -42,7 +42,7 @@ export interface Weapon {
         }[]
     }
     shopData: {
-        cost: number
+        cost?: number
         category: string
         categoryText: string
         gridPosition: {

@@ -1,7 +1,37 @@
-.weapon-card {
-    height: 300px;
+@import '/src/styles/colors';
+@import '/src/styles/utils';
 
-    img {
-        transform: rotate(15deg);
+.weapon-card {
+    height: 250px;
+    border: 1px solid white;
+
+    .overlay {
+        inset: 0;
+
+        h3 {
+            @include slash-effect($light-gray, 20px);
+            z-index: 10;
+        }
+    }
+
+    .carousel {
+        img {
+            object-fit: cover;
+            transform: rotate(15deg);
+            transition-duration: .3s;
+
+            &.Melee {
+                transform: rotate(50deg);
+            }
+
+            &:hover {
+                object-fit: contain;
+                transform: rotate(10deg) scale(1.1);
+
+                &.Melee {
+                    transform: rotate(45deg) scale(1.2);
+                }
+            }
+        }
     }
 }
