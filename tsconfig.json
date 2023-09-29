@@ -36,7 +36,6 @@
       "@interfaces/*": ["src/app/interfaces/*"],
       "@pipes/*": ["src/app/pipes/*"],
       "@services/*": ["src/app/services/*"],
-      "@types/*": ["src/app/types/*"],
     },
   },
   "angularCompilerOptions": {

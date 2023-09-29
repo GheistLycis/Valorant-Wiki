@@ -25,7 +25,16 @@ export class WeaponsComponent {
     )
   }
 
-  addToComparison(weaponId: Weapon['uuid']): void {
+  select(selectedWeapon: Weapon): void {
+    this.weaponService.$selectedWeapons.update(weapons => {
+      if(weapons.includes(selectedWeapon)) {
+        weapons = weapons.filter(({ uuid }) => uuid != selectedWeapon.uuid)
+      }
+      else {
+        weapons.push(selectedWeapon)
+      }
 
+      return weapons
+    })
   }
 }

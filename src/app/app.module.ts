@@ -10,12 +10,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ErrorsInterceptor } from './interceptors/errors.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { WeaponsSelectionComponent } from './components/weapons-selection/weapons-selection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    WeaponsSelectionComponent
   ],
   imports: [
     BrowserModule,

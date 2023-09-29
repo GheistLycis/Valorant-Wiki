@@ -1,0 +1,17 @@
+<div class="content d-flex justify-content-between bg-light-gray w-100 px-5" [ngClass]="{'show': $weapons().length}">
+    <div class="weapons-list d-flex justify-content-center gap-50px w-100">
+        <div 
+            *ngFor="let weapon of $weapons()" 
+            (click)="removeFromSelection(weapon)" 
+            class="weapon-box position-relative d-flex align-items-center h-100 pointer">
+            <img [src]="weapon.displayIcon" class="w-75">
+            <h4 class="position-absolute text-black ff-secondary">
+                {{ weapon.displayName }}
+            </h4>
+        </div>
+    </div>
+    <div *ngIf="$weapons().length" class="compare-box position-relative px-3 ms-3" [ngClass]="{'active': $weapons().length > 1}">
+        <img [src]="(compareIcon$ | async)?.fullTransparentIcon" class="h-100">
+        <small class="position-absolute text-red ff-secondary fw-bold">COMPARE</small>
+    </div>
+</div>

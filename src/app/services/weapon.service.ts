@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { apiLangs } from '../types/apiLangs';
 import { Weapon } from '@interfaces/Weapon';
 import { ApiService } from './api.service';
@@ -8,6 +8,7 @@ import { ApiService } from './api.service';
 })
 export class WeaponService {
   endpoint = 'weapons'
+  $selectedWeapons = signal<Weapon[]>([])
 
   constructor(private api: ApiService) {}
 
