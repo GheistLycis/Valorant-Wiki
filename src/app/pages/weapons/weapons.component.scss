@@ -13,12 +13,12 @@
 
             & ~ ngb-carousel {
                 .weapon-img {
-                    object-fit: contain;
-                    transform: rotate(10deg) scale(1.1);
+                    position: absolute;
+                    transform: rotate(10deg) scale(1.3);
                     opacity: 1;
         
                     &.Melee {
-                        transform: rotate(45deg) scale(1.2);
+                        transform: rotate(45deg) scale(1.1);
                     }
                 }
 
@@ -56,22 +56,12 @@
         border-left: 2px solid $light-gray;
 
         .weapon-img {
-            object-fit: cover;
             transform: rotate(15deg);
             opacity: 0.4;
             transition-duration: .3s;
 
             &.Melee {
                 transform: rotate(50deg);
-            }
-
-            &:hover {
-                object-fit: contain;
-                transform: rotate(10deg) scale(1.1);
-
-                &.Melee {
-                    transform: rotate(45deg) scale(1.2);
-                }
             }
         }
 
