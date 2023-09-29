@@ -11,7 +11,7 @@
         transition-duration: .4s;
 
         &:hover {
-            opacity: 0.2;
+            opacity: 0;
 
             & ~ ngb-carousel {
                 .weapon-img {
