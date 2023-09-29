@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Weapon } from '@interfaces/Weapon';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { WeaponService } from '@services/weapon.service';
-import { Observable, tap } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 
 @Component({
@@ -19,8 +19,9 @@ export class WeaponsComponent {
   ) {
     this.carousel.interval = 0
     this.carousel.showNavigationIndicators = false
+    
     this.weapons$ = this.weaponService.list().pipe(
-      tap(values => console.log(values))
+      map(weapons => weapons.sort((a, b) => a.displayName > b.displayName ? 1 : -1))
     )
   }
 

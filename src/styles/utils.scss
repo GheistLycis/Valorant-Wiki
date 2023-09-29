@@ -1,3 +1,16 @@
+@mixin card($color: $dark-gray, $hover: false) {
+    background-color: $color;
+    border: 1px solid transparent;
+    border-radius: 24px;
+    transition-duration: .3s;
+
+    @if $hover {
+        &:hover {
+            filter: brightness($hover);
+        }
+    }
+}
+
 @mixin glass($color, $alpha, $blur) {
     background: rgba($color, $alpha);
     backdrop-filter: blur($blur);

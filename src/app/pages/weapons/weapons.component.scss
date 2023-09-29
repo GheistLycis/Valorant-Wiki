@@ -1,6 +1,8 @@
+@import '/src/styles/utils';
 @import '/src/styles/colors';
 
 .weapon-card {
+    @include card($dark-gray, 0.8);
     height: 250px;
 
     .overlay {

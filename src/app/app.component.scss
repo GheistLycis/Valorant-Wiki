@@ -13,8 +13,8 @@ svg {
 }
 
 .content {
-    @include glass($dark-red, 0.2, 5px);
-    border: 1px solid $dark-red;
+    @include card();
+    @include glass($dark-red, 0.2, 10px);
     border-radius: 24px;
     transition-duration: .3s;
 

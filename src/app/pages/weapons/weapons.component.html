@@ -2,7 +2,7 @@
     <div 
         *ngFor="let weapon of weapons$ | async" 
         (click)="addToComparison(weapon.uuid)"
-        class="weapon-card position-relative col-sm-12 col-md-6 col-lg-4 p-3 ff-secondary pointer">
+        class="weapon-card position-relative col-sm-12 col-md-6 col-lg-4 p-2 ff-secondary pointer">
         <div class="overlay d-flex flex-column justify-content-between position-absolute p-2">
             <div class="d-flex justify-content-between">
                 <h3 class="text-uppercase">{{ weapon.displayName }}</h3>
