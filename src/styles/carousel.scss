@@ -10,32 +10,12 @@ ngb-carousel {
         }
     }
 
-    .carousel-control-next {
-        border-radius: 24px;
-
-        transition-duration: .3s;
-
-        &:hover {
-            background-color: rgba($dark-gray, 0.4);
-
-            .carousel-control-next-icon {
-                opacity: 1;
-            }
-        }
-
-        .carousel-control-next-icon {
-            opacity: 0.3;
-            transition-duration: .3s;
-        }
-    }
-
     .carousel-control-prev {
         border-radius: 24px;
-
         transition-duration: .3s;
 
         &:hover {
-            background-color: rgba($dark-gray, 0.4);
+            background-color: rgba($dark-red, 0.5);
 
             .carousel-control-prev-icon {
                 opacity: 1;
@@ -43,6 +23,24 @@ ngb-carousel {
         }
 
         .carousel-control-prev-icon {
+            opacity: 0.3;
+            transition-duration: .3s;
+        }
+    }
+
+    .carousel-control-next {
+        border-radius: 24px;
+        transition-duration: .3s;
+
+        &:hover {
+            background-color: rgba($dark-red, 0.5);
+
+            .carousel-control-next-icon {
+                opacity: 1;
+            }
+        }
+
+        .carousel-control-next-icon {
             opacity: 0.3;
             transition-duration: .3s;
         }
