@@ -25,4 +25,8 @@ export class WeaponsSelectionComponent {
   removeFromSelection({ uuid }: Weapon): void {
     this.$weapons.update(weapons => weapons.filter(weapon => weapon.uuid != uuid))
   }
+
+  clearList(): void {
+    this.$weapons.update(weapons => weapons = [])
+  }
 }

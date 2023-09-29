@@ -38,6 +38,22 @@
         }
     }
 
+    .trash-icon {
+        height: 30px;
+        width: 30px;
+        border: 1px solid transparent;
+        border-radius: 50%;
+        transition-duration: .3s;
+
+        &:hover {
+            background-color: $dark-gray;
+
+            img {
+                filter: $filter-white;
+            }
+        }
+    }
+
     .compare-box {
         width: 150px;
         transform: skew(20deg);
