@@ -2,4 +2,4 @@
 
 This project aims to be an interactive way of navigating through Valorant info using the game's public API (https://valorant-api.com/). 
 
-Therefore, the core concerns are with design, eficiency and responsiveness, making the most of Angular 16, RxJs and Signals.
+Therefore, the core concerns are with design, eficiency and responsiveness, making the most of Angular 16, Signals, RxJS, SCSS and Bootstrap 5.
