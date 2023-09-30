@@ -1,3 +1,5 @@
 # ValorantWiki
 
-This project's aim is simply to be an interactive way of navigating through Valorant info using the game's public api (https://valorant-api.com/). Therefore, the core concerns are with design, eficiency and responsiveness. I tried to achieve this making the most I could of RxJS and Angular 16 features.
+This project aims to be an interactive way of navigating through Valorant info using the game's public API (https://valorant-api.com/). 
+
+Therefore, the core concerns are with design, eficiency and responsiveness, making the most of Angular 16, RxJs and Signals.
