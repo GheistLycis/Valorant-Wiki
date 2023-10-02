@@ -1,0 +1,17 @@
+<div>
+	<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+		<li *ngFor="let weapon of $weapons()" [ngbNavItem]="weapon.uuid">
+			<button ngbNavLink>
+				{{ weapon.displayName }}
+				<span (click)="weaponService.removeFromSelection(weapon)" class="btn-close ms-2 fw-light"></span>
+			</button>
+			<ng-template ngbNavContent>
+				<div class="text-black">
+					CHART
+				</div>
+			</ng-template>
+		</li>
+	</ul>
+	
+	<div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

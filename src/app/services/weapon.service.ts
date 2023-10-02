@@ -23,4 +23,24 @@ export class WeaponService {
   getMedia(path: string) {
     return this.api.getMedia(path)
   }
+
+  addToSelection(weapon: Weapon): void {
+    if(!this.$selectedWeapons().includes(weapon)) {
+      this.$selectedWeapons.update(weapons => {
+        weapons.push(weapon)
+        return weapons
+      })
+    }
+    else {
+      this.removeFromSelection(weapon)
+    }
+  }
+
+  removeFromSelection({ uuid }: Weapon): void {
+    this.$selectedWeapons.update(weapons => weapons.filter(weapon => weapon.uuid != uuid))
+  }
+
+  clearSelection(): void {
+    this.$selectedWeapons.set([])
+  }
 }

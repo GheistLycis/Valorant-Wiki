@@ -1,8 +1,10 @@
-<div class="content d-flex justify-content-between bg-light-gray w-100 px-5 position-absolute overflow-hidden" [ngClass]="{'collapsed': $weapons().length, 'expanded': expanded}">
-    <div *ngIf="!expanded" class="weapons-list d-flex justify-content-center gap-50px w-100">
+<div 
+    class="content d-flex justify-content-between bg-light-gray w-100 px-5 position-absolute overflow-hidden" 
+    [ngClass]="{'hidden': !$weapons().length, 'collapsed': $weapons().length, 'expanded': $expanded()}">
+    <div *ngIf="!$expanded()" class="weapons-list d-flex justify-content-center gap-50px w-100">
         <div 
             *ngFor="let weapon of $weapons()" 
-            (click)="removeFromSelection(weapon)" 
+            (click)="weaponService.removeFromSelection(weapon)" 
             class="weapon-box position-relative d-flex align-items-center h-100 pointer">
             <img [src]="weapon.displayIcon" class="w-75">
             <h4 class="position-absolute text-black ff-secondary">
@@ -11,16 +13,16 @@
         </div>
     </div>
 
-    <div *ngIf="expanded" class="analysis-board">
-        
+    <div *ngIf="$expanded()" class="w-100">
+        <app-weapons-match/>
     </div>
 
     <div class="actions d-flex gap-20px align-items-center">
-        <button (click)="clearList()">
+        <button (click)="weaponService.clearSelection()" class="p-2">
             <img src="assets/icons/trash.svg" width="30px">
         </button>
-        <button (click)="expanded = !expanded" [disabled]="$weapons().length < 2">
-            <img src="assets/icons/arrow-up.svg" width="30px" [ngClass]="{'rotate': expanded}">
+        <button (click)="$expand.set(!$expand())" [disabled]="!$expanded() && !$minSelections()" class="p-2">
+            <img src="assets/icons/arrow-up.svg" width="30px" [ngClass]="{'rotate': $expanded()}">
         </button>
     </div>
 </div>

@@ -1,8 +1,6 @@
 @import '/src/styles/colors';
 @import '../footer/footer.component.scss';
 
-$height: 80px;
-
 .content {
     height: 0;
     left: 0;
@@ -10,8 +8,12 @@ $height: 80px;
     bottom: $footer-height;
     transition: ease-in-out .3s;
 
+    &.hidden {
+        height: 0;
+    }
+
     &.collapsed {
-        height: $height;
+        height: 80px;
     }
 
     &.expanded {
@@ -19,8 +21,6 @@ $height: 80px;
     }
 
     .weapons-list {
-        max-width: 75%;
-
         .weapon-box {
             opacity: 0;
             width: 300px;
@@ -48,12 +48,9 @@ $height: 80px;
         }
     }
 
-    .analysis-board {
-        max-width: 75%;
-    }
-
     .actions {
-        height: $height;
+        min-width: 100px;
+        height: 80px;
 
         button {
             display: flex;
@@ -61,8 +58,6 @@ $height: 80px;
             align-items: center;
             border: 1px solid transparent;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
             transition-duration: .3s;
 
             &:hover {

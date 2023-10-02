@@ -1,5 +1,4 @@
-import { Component, WritableSignal } from '@angular/core';
-import { Weapon } from '@interfaces/Weapon';
+import { Component, computed, signal } from '@angular/core';
 import { WeaponService } from '@services/weapon.service';
 
 @Component({
@@ -8,20 +7,10 @@ import { WeaponService } from '@services/weapon.service';
   styleUrls: ['./weapons-selection.component.scss']
 })
 export class WeaponsSelectionComponent {
-  $weapons!: WritableSignal<Weapon[]>
-  expanded = false
+  $weapons = this.weaponService.$selectedWeapons
+  $minSelections = computed(() => this.$weapons().length >= 2)
+  $expand = signal(false)
+  $expanded = computed(() => this.$expand() && this.$minSelections())
 
-  constructor(
-    private weaponService: WeaponService,
-  ) {
-    this.$weapons = this.weaponService.$selectedWeapons
-  }
-
-  removeFromSelection({ uuid }: Weapon): void {
-    this.$weapons.update(weapons => weapons.filter(weapon => weapon.uuid != uuid))
-  }
-
-  clearList(): void {
-    this.$weapons.update(weapons => weapons = [])
-  }
+  constructor(public weaponService: WeaponService) {}
 }

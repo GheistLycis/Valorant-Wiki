@@ -9,15 +9,17 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ErrorsInterceptor } from './interceptors/errors.interceptor';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { WeaponsSelectionComponent } from './components/weapons-selection/weapons-selection.component';
+import { WeaponsMatchComponent } from './components/weapon-selection/components/weapons-match/weapons-match.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    WeaponsSelectionComponent
+    WeaponsSelectionComponent,
+    WeaponsMatchComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { WeaponsSelectionComponent } from './components/weapons-selection/weapon
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
+    NgbNavModule,
     ToastrModule.forRoot({
       timeOut: 5000,
       preventDuplicates: true,

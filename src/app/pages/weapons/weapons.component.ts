@@ -14,27 +14,14 @@ export class WeaponsComponent {
   weapons$!: Observable<Weapon[]>
 
   constructor(
-    private weaponService: WeaponService,
+    public weaponService: WeaponService,
     private carousel: NgbCarouselConfig,
   ) {
     this.carousel.interval = 0
     this.carousel.showNavigationIndicators = false
     
     this.weapons$ = this.weaponService.list().pipe(
-      map(weapons => weapons.sort((a, b) => a.displayName > b.displayName ? 1 : -1))
+      map(weapons => weapons.sort((a, b) => a.displayName > b.displayName ? 1 : -1)),
     )
-  }
-
-  select(selectedWeapon: Weapon): void {
-    this.weaponService.$selectedWeapons.update(weapons => {
-      if(weapons.includes(selectedWeapon)) {
-        weapons = weapons.filter(({ uuid }) => uuid != selectedWeapon.uuid)
-      }
-      else {
-        weapons.push(selectedWeapon)
-      }
-
-      return weapons
-    })
   }
 }
