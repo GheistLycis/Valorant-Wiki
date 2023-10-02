@@ -12,6 +12,7 @@ import { ErrorsInterceptor } from './interceptors/errors.interceptor';
 import { NgbModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { WeaponsSelectionComponent } from './components/weapons-selection/weapons-selection.component';
 import { WeaponsMatchComponent } from './components/weapon-selection/components/weapons-match/weapons-match.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { WeaponsMatchComponent } from './components/weapon-selection/components/
     HttpClientModule,
     NgbModule,
     NgbNavModule,
+    NgChartsModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 5000,
       preventDuplicates: true,
