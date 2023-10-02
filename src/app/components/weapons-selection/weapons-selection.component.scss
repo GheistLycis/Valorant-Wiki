@@ -1,11 +1,21 @@
 @import '/src/styles/colors';
+@import '../footer/footer.component.scss';
+
+$height: 80px;
 
 .content {
     height: 0;
-    transition: ease-out .4s;
+    left: 0;
+    right: 0;
+    bottom: $footer-height;
+    transition: ease-in-out .3s;
 
-    &.show {
-        height: 100px;
+    &.collapsed {
+        height: $height;
+    }
+
+    &.expanded {
+        height: 70%;
     }
 
     .weapons-list {
@@ -38,46 +48,46 @@
         }
     }
 
-    .trash-icon {
-        height: 30px;
-        width: 30px;
-        border: 1px solid transparent;
-        border-radius: 50%;
-        transition-duration: .3s;
+    .analysis-board {
+        max-width: 75%;
+    }
 
-        &:hover {
-            background-color: $dark-gray;
+    .actions {
+        height: $height;
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            transition-duration: .3s;
+
+            &:hover {
+                background-color: $black;
+
+                img {
+                    filter: $filter-white;
+                }
+            }
+
+            &:disabled {
+                img {
+                    opacity: 0.5;
+                }
+            }
 
             img {
-                filter: $filter-white;
+                transition-duration: .3s;
+
+                &.rotate {
+                    transform: rotate(180deg);
+                }
             }
         }
     }
-
-    .compare-box {
-        width: 150px;
-        transform: skew(20deg);
-        background-color: $light-gray;
-        transition-duration: .2s;
-
-        &.active {
-            cursor: pointer;
-            background-color: $dark-gray;
-
-            small {
-                opacity: 1;
-            }
-        }
-
-        small {
-            font-size: 24px;
-            top: 5px;
-            right: 5px;
-            opacity: 0;
-            transition-duration: .3s;
-        }
-    }
-
 }
 
 @keyframes fade-in {
