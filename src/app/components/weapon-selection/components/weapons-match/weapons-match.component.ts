@@ -1,5 +1,5 @@
-import { Component, WritableSignal } from '@angular/core';
-import { Weapon } from '@interfaces/Weapon';
+import { Component } from '@angular/core';
+import { NgbNavConfig } from '@ng-bootstrap/ng-bootstrap';
 import { WeaponService } from '@services/weapon.service';
 
 @Component({
@@ -8,10 +8,12 @@ import { WeaponService } from '@services/weapon.service';
   styleUrls: ['./weapons-match.component.scss']
 })
 export class WeaponsMatchComponent {
-  $weapons!: WritableSignal<Weapon[]>
-  active = 0
+  $weapons = this.weaponService.$selectedWeapons
 
-  constructor(public weaponService: WeaponService) {
-    this.$weapons = this.weaponService.$selectedWeapons
+  constructor(
+    public weaponService: WeaponService,
+    private navConfig: NgbNavConfig
+  ) {
+    this.navConfig.animation = true
   }
 }

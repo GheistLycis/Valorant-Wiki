@@ -13,11 +13,11 @@
         </div>
     </div>
 
-    <div *ngIf="$expanded()" class="w-100">
+    <div *ngIf="$expanded()" class="w-100 pt-3">
         <app-weapons-match/>
     </div>
 
-    <div class="actions d-flex gap-20px align-items-center">
+    <div class="actions d-flex gap-20px align-items-center ms-3">
         <button (click)="weaponService.clearSelection()" class="p-2">
             <img src="assets/icons/trash.svg" width="30px">
         </button>

@@ -1,17 +1,20 @@
-<div>
-	<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-		<li *ngFor="let weapon of $weapons()" [ngbNavItem]="weapon.uuid">
-			<button ngbNavLink>
-				{{ weapon.displayName }}
-				<span (click)="weaponService.removeFromSelection(weapon)" class="btn-close ms-2 fw-light"></span>
-			</button>
-			<ng-template ngbNavContent>
-				<div class="text-black">
-					CHART
-				</div>
-			</ng-template>
-		</li>
-	</ul>
-	
-	<div [ngbNavOutlet]="nav" class="mt-2"></div>
+<ul ngbNav #nav="ngbNav" [activeId]="0">
+	<li *ngFor="let weapon of $weapons(); index as i" [ngbNavItem]="i">
+		<button ngbNavLink>
+			{{ weapon.displayName | uppercase }}
+			<span (click)="weaponService.removeFromSelection(weapon)" class="x"></span>
+		</button>
+		<ng-template ngbNavContent>
+			<div class="h-100 w-50">
+				CHART
+			</div>
+		</ng-template>
+	</li>
+</ul>
+
+<div class="content d-flex justify-content-between gap-50px p-3 text-black">
+	<div class="chart h-100 w-50">
+		TESTE
+	</div>
+	<div [ngbNavOutlet]="nav"></div>
 </div>

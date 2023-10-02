@@ -1,0 +1,42 @@
+ul[ngbNav] {
+    border-bottom: 1px solid $black;
+
+    button[ngbNavLink] {
+        transform: translateY(1px);
+        font-family: secondary;
+        font-size: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        color: $black;
+        border: 1px solid $black;
+        margin-right: 20px;
+        transition-duration: .3s;
+
+        &.active {
+            border-bottom-color: transparent;
+        }
+
+        &.active,
+        &:hover {
+            color: $dark-red;
+            background-color: $white;
+        }
+
+        span.x {
+            cursor: pointer;
+            margin-left: 5px;
+            
+            &:hover {
+                &::after {
+                    color: $red;
+                }
+            }
+            
+            &::after {
+                font-size: 20px;
+                content: 'X';
+                transition-duration: .3s;
+            }
+        }
+    }
+}
