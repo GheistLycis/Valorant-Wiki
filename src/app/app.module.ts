@@ -20,7 +20,6 @@ import { WeaponsModule } from './pages/weapons/weapons.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     HttpClientModule,
     ToastrModule.forRoot({
       timeOut: 5000,
@@ -28,6 +27,7 @@ import { WeaponsModule } from './pages/weapons/weapons.module';
       countDuplicates: true
     }),
 
+    AppRoutingModule,
     WeaponsModule,
   ],
   providers: [
