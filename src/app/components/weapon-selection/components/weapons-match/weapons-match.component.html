@@ -1,4 +1,4 @@
-<ul ngbNav #nav="ngbNav" [(activeId)]="selectedWeapon">
+<ul ngbNav #nav="ngbNav" [activeId]="$selectedWeapon()" (activeIdChange)="$selectedWeapon.set($event)">
 	<li *ngFor="let weapon of $weapons()" [ngbNavItem]="weapon.uuid">
 		<button ngbNavLink>
 			{{ weapon.displayName | uppercase }}
@@ -12,14 +12,13 @@
 	</li>
 </ul>
 
-<div class="content d-flex justify-content-between gap-50px p-3 text-black">
-	<div class="chart h-100 w-50">
+<div class="content h-100 w-100 d-flex justify-content-between gap-50px p-3 text-black">
+	<div class="d-flex justify-content-center align-items-center h-100 w-50">
 		<canvas
 			baseChart
 			type="radar"
 			[options]="options"
-			[data]="$data()"
-			[plugins]="plugins">
+			[data]="$data()">
 		</canvas>
 	</div>
 	<div [ngbNavOutlet]="nav"></div>

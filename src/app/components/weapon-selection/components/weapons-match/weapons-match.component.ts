@@ -1,10 +1,9 @@
-import { Component, Signal, computed } from '@angular/core';
+import { Component, Signal, WritableSignal, computed, signal } from '@angular/core';
 import { palette } from '@enums/palette';
 import { Weapon } from '@interfaces/Weapon';
 import { NgbNavConfig } from '@ng-bootstrap/ng-bootstrap';
 import { WeaponService } from '@services/weapon.service';
 import { ChartConfiguration } from 'chart.js';
-import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-weapons-match',
@@ -12,52 +11,34 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
   styleUrls: ['./weapons-match.component.scss']
 })
 export class WeaponsMatchComponent {
-  selectedWeapon!: Weapon['uuid']
-  $weapons = this.weaponService.$selectedWeapons
+  $weapons!: WritableSignal<Weapon[]>
+  $selectedWeapon!: WritableSignal<Weapon['uuid']>
+  $data!: Signal<any>
   options: ChartConfiguration<'radar'>['options'] = {
     color: palette.black,
     plugins: {
-      title: {
-        display: true,
-        text: 'Gastos por Categoria',
-        color: palette.black,
-        font: {
-          family: 'Overpass',
-          size: 20,
-        },
-      },
       legend: {
-        position: 'top',
-        labels: {
-          font: {
-            family: 'Overpass',
-          },
-        },
-      },
-      datalabels: {
-        color: palette.black,
-        font: {
-          size: 16,
-          weight: 700,
-          family: 'Overpass',
-        },
-        formatter: (value, ctx) => console.log(value, ctx),
+        display: false,
       },
       tooltip: {
         callbacks: {
-          label: ({ dataset, parsed }) => console.log(dataset, parsed),
+          title: ([ tooltip ]) => tooltip.dataset.label!.toUpperCase(),
+          label: ({ parsed }) => parsed.r.toString(),
         },
         titleFont: {
-          family: 'Overpass',
+          family: 'secondary',
+          size: 20,
         },
         bodyFont: {
-          family: 'Overpass',
-        }
+          family: 'secondary',
+          size: 40,
+          weight: '700',
+        },
+        boxHeight: 0,
+        boxWidth: 0,
       },
     },
   }
-  plugins = [DataLabelsPlugin]
-  $data!: Signal<any>
 
   constructor(
     public weaponService: WeaponService,
@@ -65,38 +46,36 @@ export class WeaponsMatchComponent {
   ) {
     this.navConfig.animation = true
 
+    this.$weapons = this.weaponService.$selectedWeapons
+
+    this.$selectedWeapon = signal(this.$weapons()[0].uuid)
+
     this.$data = computed(() => ({
       labels: [
-        'Price',
-        'Equip Time',
-        'Reload Time',
-        'Range',
-        '1st Bullet Accur.',
-        'Magazine',
-        'Burst Count',
-        'Fire Rate',
-        'Zoom Mult.',
-        'Run Speed Mult.',
-        'AVG DMG - Head',
-        'AVG DMG - Body',
-        'AVG DMG - Legs',
+        'AVG DMG Head',
+        'AVG DMG Body',
+        'AVG DMG Legs',
+        'Magazine Size',
+        'Fire Rate (/s)',
+        'Range (m)',
+        'Reload Time (s)',
+        'Equip Time (s)',
       ],
-      datasets: this.$weapons().map(weapon => {
-        const data: any[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-
-        return {
-          label: weapon.displayName,
-          data,
-          fill: true,
-          // order: weapon.uuid == this.selectedWeapon ? 1 : 0,
-          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-          borderColor: 'rgb(54, 162, 235)',
-          pointBackgroundColor: 'rgb(54, 162, 235)',
-          pointBorderColor: '#fff',
-          pointHoverBackgroundColor: '#fff',
-          pointHoverBorderColor: 'rgb(54, 162, 235)',
-        }
-      })
+      datasets: this.$weapons().map(({ displayName, weaponStats, uuid }) => ({
+        label: displayName,
+        data: [
+          (weaponStats!.damageRanges.reduce((acc, { headDamage }) => acc += headDamage, 0)) / (weaponStats!.damageRanges.length),
+          (weaponStats!.damageRanges.reduce((acc, { bodyDamage }) => acc += bodyDamage, 0)) / (weaponStats!.damageRanges.length),
+          (weaponStats!.damageRanges.reduce((acc, { legDamage }) => acc += legDamage, 0)) / (weaponStats!.damageRanges.length),
+          weaponStats!.magazineSize,
+          weaponStats!.fireRate,
+          weaponStats!.damageRanges.reduce((acc, { rangeEndMeters }) => acc = Math.max(rangeEndMeters, acc), 0),
+          weaponStats!.reloadTimeSeconds,
+          weaponStats!.equipTimeSeconds,
+        ],
+        fill: true,
+        order: uuid == this.$selectedWeapon() ? 0 : 1,
+      }))
     }))
   }
 }

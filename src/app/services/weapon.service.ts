@@ -25,14 +25,16 @@ export class WeaponService {
   }
 
   addToSelection(weapon: Weapon): void {
-    if(!this.$selectedWeapons().includes(weapon)) {
-      this.$selectedWeapons.update(weapons => {
-        weapons.push(weapon)
-        return weapons
-      })
-    }
-    else {
-      this.removeFromSelection(weapon)
+    if(weapon.displayName != 'Melee') {
+      if(!this.$selectedWeapons().includes(weapon)) {
+        this.$selectedWeapons.update(weapons => {
+          weapons.push(weapon)
+          return weapons
+        })
+      }
+      else {
+        this.removeFromSelection(weapon)
+      }
     }
   }
 
