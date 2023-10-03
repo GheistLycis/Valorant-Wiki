@@ -21,7 +21,7 @@
         <button (click)="weaponService.clearSelection()" class="p-2">
             <img src="assets/icons/trash.svg" width="30px">
         </button>
-        <button (click)="$expand.set(!$expand())" [disabled]="!$expanded() && !$minSelections()" class="p-2">
+        <button (click)="$expand.set(!$expand())" [disabled]="!$minSelections()" class="p-2">
             <img src="assets/icons/arrow-up.svg" width="30px" [ngClass]="{'rotate': $expanded()}">
         </button>
     </div>

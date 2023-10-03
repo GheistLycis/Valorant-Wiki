@@ -11,7 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ErrorsInterceptor } from './interceptors/errors.interceptor';
 import { NgbModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { WeaponsSelectionComponent } from './components/weapons-selection/weapons-selection.component';
-import { WeaponsMatchComponent } from './components/weapon-selection/components/weapons-match/weapons-match.component';
+import { WeaponsMatchComponent } from '@components/weapons-selection/components/weapons-match/weapons-match.component';
 import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({

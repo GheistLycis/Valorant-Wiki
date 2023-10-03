@@ -21,7 +21,7 @@ export class WeaponsComponent {
     this.carousel.showNavigationIndicators = false
     
     this.weapons$ = this.weaponService.list().pipe(
-      map(weapons => weapons.sort((a, b) => a.displayName > b.displayName ? 1 : -1)),
+      map(weapons => weapons.sort((a, b) => a.displayName < b.displayName ? -1 : 1)),
     )
   }
 }

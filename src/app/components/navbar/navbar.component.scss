@@ -13,7 +13,7 @@ nav {
     transition-duration: .2s;
 
     &:hover {
-        @include glass($light-gray, 0.1, 8px);
+        @include glass($light-gray, 0.1, 4px);
         height: $nav-height + 10px;
         box-shadow: 0 0 10px 15px rgba($dark-red, 0.8);
     }
