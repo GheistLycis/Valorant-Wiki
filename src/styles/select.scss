@@ -1,0 +1,81 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+ng-select {
+    .ng-select-container {
+        height: 40px !important;
+        min-width: 100px;
+        padding: 5px;
+        padding-left: 10px !important;
+        background-color: $light-gray;
+        border: 1px solid $black;
+        border-radius: 2px;
+        cursor: pointer !important;
+
+        &::placeholder {
+            color: $light-gray;
+        }
+
+        input {
+            cursor: pointer !important;
+        }
+        
+        .ng-value-container {
+            color: $dark-gray;
+            padding-left: 8px;
+            gap: 8px;
+            height: 30px;
+            cursor: pointer !important;
+
+            .ng-value {
+                display: flex;
+                align-items: center;
+                gap: 2px;
+            }
+
+            .ng-placeholder {
+                color: $dark-gray;
+            }
+        }
+    }
+
+    .ng-dropdown-panel {
+        .ng-option {
+            padding: 3px 5px;
+            border-left: 1px solid $black;
+            border-right: 1px solid $black;
+            border-bottom: 1px solid $black;
+            background: $light-gray;
+            color: $black;
+    
+            &.ng-option-marked {
+                color: $light-gray;
+                background: $black;
+            }
+        }
+
+        .ng-option-disabled {
+            @extend .ng-option;
+            color: $dark-red;
+        }
+    
+        .ng-clear-wrapper {
+            transform: translateY(7px);
+            color: $black;
+        }
+    
+        .ng-footer-tmp {
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            width: 100%;
+            padding: 3px 5px;
+            background-color: $light-gray;
+            border: 1px solid $black;
+            color: $black;
+            border-color: $black;
+            font-weight: 500;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+    }
+}

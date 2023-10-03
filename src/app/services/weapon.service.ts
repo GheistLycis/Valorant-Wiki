@@ -1,26 +1,42 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, WritableSignal, signal } from '@angular/core';
 import { apiLangs } from '../types/apiLangs';
 import { Weapon } from '@interfaces/Weapon';
 import { ApiService } from './api.service';
+import { Observable, iif, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeaponService {
-  endpoint = 'weapons'
-  $selectedWeapons = signal<Weapon[]>([])
+  apiEndpoint = 'weapons'
+  cachedWeapons!: Weapon[]
+  $selectedWeapons!: WritableSignal<Weapon[]>
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) {
+    this.cachedWeapons = []
 
-  get(id: string, language?: apiLangs) {
-    return this.api.get<Weapon>(this.endpoint, id, language)
+    this.$selectedWeapons = signal([])
   }
 
-  list(language?: apiLangs) {
-    return this.api.list<Weapon>(this.endpoint, language)
+  get(id: string, language?: apiLangs): Observable<Weapon> {
+    return iif(
+      () => this.cachedWeapons.length > 0,
+      of(this.cachedWeapons.find(({ uuid }) => uuid == id)!),
+      this.api.get<Weapon>(this.apiEndpoint, id, language)
+    )
   }
 
-  getMedia(path: string) {
+  list(language?: apiLangs): Observable<Weapon[]> {
+    return iif(
+      () => this.cachedWeapons.length > 0,
+      of(this.cachedWeapons),
+      this.api.list<Weapon>(this.apiEndpoint, language).pipe(
+        tap(weapons => this.cachedWeapons = weapons),
+      )
+    )
+  }
+
+  getMedia(path: string): Observable<string> {
     return this.api.getMedia(path)
   }
 

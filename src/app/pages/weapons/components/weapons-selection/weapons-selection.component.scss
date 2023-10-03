@@ -6,7 +6,7 @@
     left: 0;
     right: 0;
     bottom: $footer-height;
-    transition: ease-in-out .3s;
+    transition-duration: .2s;
 
     &.hidden {
         height: 0;

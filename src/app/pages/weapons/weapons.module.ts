@@ -6,6 +6,7 @@ import { WeaponsAnalysisComponent } from './components/weapons-analysis/weapons-
 import { NgbCarouselModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgChartsModule } from 'ng2-charts';
 import { WeaponsFiltersComponent } from './components/weapons-filters/weapons-filters.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -21,6 +22,7 @@ import { WeaponsFiltersComponent } from './components/weapons-filters/weapons-fi
     NgbCarouselModule,
     NgbNavModule,
     NgChartsModule,
+    NgSelectModule,
   ],
   exports: [
     WeaponsSelectionComponent,
