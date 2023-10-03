@@ -1,0 +1,38 @@
+@import '/src/styles/colors';
+@import '/src/app/components/navbar/navbar.component';
+
+.content {
+    z-index: 1;
+    height: 100px;
+    left: 0;
+    width: 50px;
+    top: $nav-height;
+    padding-bottom: 40px;
+    background-clip: content-box, padding-box;
+    background-image: 
+        linear-gradient(to bottom, rgba($black, 1) 0%, rgba($black, 1) 100%), 
+        linear-gradient(to bottom, transparent 0%, transparent 100%);
+    transform: translateY(-100px);
+    transition: transform .3s;
+
+    &.expanded {
+        transform: translateY(-40px);
+        width: 100%;
+    }
+    
+    button.expand {
+        bottom: 0px;
+        left: 10px;
+        border-color: transparent;
+        border-radius: 0 0 24px 24px;
+        padding: 5px;
+
+        img {
+            transition-duration: .3s;
+
+            &.rotate {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}

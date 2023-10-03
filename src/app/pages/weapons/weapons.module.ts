@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeaponsComponent } from './weapons.component';
 import { WeaponsSelectionComponent } from './components/weapons-selection/weapons-selection.component';
-import { WeaponsMatchComponent } from './components/weapons-match/weapons-match.component';
+import { WeaponsAnalysisComponent } from './components/weapons-analysis/weapons-analysis.component';
 import { NgbCarouselModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgChartsModule } from 'ng2-charts';
+import { WeaponsFiltersComponent } from './components/weapons-filters/weapons-filters.component';
 
 
 
@@ -12,7 +13,8 @@ import { NgChartsModule } from 'ng2-charts';
   declarations: [
     WeaponsComponent,
     WeaponsSelectionComponent,
-    WeaponsMatchComponent,
+    WeaponsAnalysisComponent,
+    WeaponsFiltersComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { NgChartsModule } from 'ng2-charts';
   ],
   exports: [
     WeaponsSelectionComponent,
+    WeaponsFiltersComponent,
   ]
 })
 export class WeaponsModule { }

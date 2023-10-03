@@ -8,11 +8,11 @@ import { ChartData, ChartDataset, ChartOptions } from 'chart.js';
 
 
 @Component({
-  selector: 'app-weapons-match',
-  templateUrl: './weapons-match.component.html',
-  styleUrls: ['./weapons-match.component.scss']
+  selector: 'app-weapons-analysis',
+  templateUrl: './weapons-analysis.component.html',
+  styleUrls: ['./weapons-analysis.component.scss']
 })
-export class WeaponsMatchComponent {
+export class WeaponsAnalysisComponent {
   $weapons!: WritableSignal<Weapon[]>
   $selectedWeapon!: WritableSignal<Weapon['uuid']>
   $data!: Signal<ChartData<'radar', number[], string>>

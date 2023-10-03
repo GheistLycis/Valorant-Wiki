@@ -1,0 +1,6 @@
+<div class="content d-flex gap-30px position-absolute overflow-hidden" [ngClass]="{'expanded': $expanded()}">
+    TESTE
+    <button (click)="$expanded.set(!$expanded())" class="expand position-absolute bg-black p-2">
+        <img src="assets/icons/arrow-down.svg" width="20px" class="filter-white" [ngClass]="{'rotate': $expanded()}">
+    </button>
+</div>
