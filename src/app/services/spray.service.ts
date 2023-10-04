@@ -7,16 +7,18 @@ import { Spray } from '@interfaces/Spray';
   providedIn: 'root'
 })
 export class SprayService {
-  endpoint = 'sprays'
+  apiEndpoint!: string
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) {
+    this.apiEndpoint = 'sprays'
+  }
 
   get(id: string, language?: apiLangs) {
-    return this.api.get<Spray>(this.endpoint, id, language)
+    return this.api.get<Spray>(this.apiEndpoint, id, language)
   }
 
   list(language?: apiLangs) {
-    return this.api.list<Spray>(this.endpoint, language)
+    return this.api.list<Spray>(this.apiEndpoint, language)
   }
 
   getMedia(path: string) {

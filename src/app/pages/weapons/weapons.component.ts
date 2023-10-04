@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, WritableSignal } from '@angular/core';
 import { Weapon } from '@interfaces/Weapon';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { WeaponService } from '@services/weapon.service';
-import { Observable, map } from 'rxjs';
 
 
 @Component({
@@ -11,7 +10,7 @@ import { Observable, map } from 'rxjs';
   styleUrls: ['./weapons.component.scss']
 })
 export class WeaponsComponent {
-  weapons$!: Observable<Weapon[]>
+  $weapons!: WritableSignal<Weapon[]>
 
   constructor(
     public weaponService: WeaponService,
@@ -19,9 +18,11 @@ export class WeaponsComponent {
   ) {
     this.carousel.interval = 0
     this.carousel.showNavigationIndicators = false
-    
-    this.weapons$ = this.weaponService.list().pipe(
-      map(weapons => weapons.sort((a, b) => a.displayName < b.displayName ? -1 : 1)),
-    )
+  
+    this.$weapons = this.weaponService.$filteredWeapons
+  }
+
+  trackByFn(i: number, weapon: Weapon): string {
+    return weapon.uuid
   }
 }

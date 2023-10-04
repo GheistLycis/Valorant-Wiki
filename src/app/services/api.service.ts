@@ -8,11 +8,15 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  apiUrl = 'https://valorant-api.com/v1'
-  mediaApiUrl = 'https://media.valorant-api.com'
-  defaultLang: apiLangs = 'en-US'
+  apiUrl!: string
+  mediaApiUrl!: string
+  defaultLang!: apiLangs
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.apiUrl = 'https://valorant-api.com/v1'
+    this.mediaApiUrl = 'https://media.valorant-api.com'
+    this.defaultLang = 'en-US'
+  }
 
   get<T>(endpoint: string, id: string, language = this.defaultLang) {
     return this.http

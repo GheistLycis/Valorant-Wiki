@@ -1,12 +1,13 @@
 <div class="content d-flex gap-30px position-absolute" [ngClass]="{'expanded': $expanded()}">
-    <div class="filters d-flex justify-content-start align-items-center gap-30px ps-3 py-2 bg-white w-100">
+    <div class="filters d-flex justify-content-start align-items-center gap-30px ps-3 py-2 bg-black w-100">
         <ng-select
             [items]="weapons$ | async"
             bindLabel="displayName"
             bindValue="uuid"
             notFoundText="No weapons found"
+            (change)="selectedWeapon$.next($event)"
             [groupBy]="groupByFn"
-            [typeahead]="searchByName$"
+            [typeahead]="nameSearch$"
             placeholder="Type to search..."/>
     </div>
 

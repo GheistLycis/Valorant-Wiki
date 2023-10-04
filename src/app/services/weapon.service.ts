@@ -8,14 +8,16 @@ import { Observable, iif, of, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class WeaponService {
-  apiEndpoint = 'weapons'
+  apiEndpoint!: string
   cachedWeapons!: Weapon[]
   $selectedWeapons!: WritableSignal<Weapon[]>
+  $filteredWeapons!: WritableSignal<Weapon[]>
 
   constructor(private api: ApiService) {
+    this.apiEndpoint = 'weapons'
     this.cachedWeapons = []
-
     this.$selectedWeapons = signal([])
+    this.$filteredWeapons = signal([])
   }
 
   get(id: string, language?: apiLangs): Observable<Weapon> {
