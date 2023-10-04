@@ -16,10 +16,10 @@ export class WeaponsComponent {
     public weaponService: WeaponService,
     private carousel: NgbCarouselConfig,
   ) {
-    this.carousel.interval = 0
-    this.carousel.showNavigationIndicators = false
+    carousel.interval = 0
+    carousel.showNavigationIndicators = false
   
-    this.$weapons = this.weaponService.$filteredWeapons
+    this.$weapons = weaponService.$filteredWeapons
   }
 
   trackByFn(i: number, weapon: Weapon): string {

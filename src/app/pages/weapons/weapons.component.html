@@ -9,9 +9,7 @@
                 <div *ngIf="weapon.displayName != 'Melee'" class="info d-flex flex-column justify-content-between gap-10px">
                     <div>
                         <h4 class="text-red">
-                            DAMAGE
-                            ({{ weapon.weaponStats!.damageRanges[0].rangeStartMeters }}m - 
-                            {{ weapon.weaponStats!.damageRanges[0].rangeEndMeters }}m)
+                            DAMAGE (0 - {{ weapon.weaponStats!.damageRanges[0].rangeEndMeters }}m)
                         </h4>
                         <div class="d-flex justify-content-between w-100">
                             <div>

@@ -22,9 +22,9 @@ export class WeaponsAnalysisComponent {
     public weaponService: WeaponService,
     private navConfig: NgbNavConfig
   ) {
-    this.navConfig.animation = true
+    navConfig.animation = true
 
-    this.$weapons = this.weaponService.$selectedWeapons
+    this.$weapons = weaponService.$selectedWeapons
 
     this.$selectedWeapon = signal(this.$weapons()[0].uuid)
 

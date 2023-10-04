@@ -26,7 +26,40 @@
 
     .filters {
         ng-select {
-            width: 200px;
+            width: 250px;
+        }
+
+        .order-by {
+            [sortBy] {
+                position: relative;
+                font-size: 20px;
+                transition-duration: .2s;
+
+                &:hover,
+                &.active {
+                    color: $red;
+                }
+
+                &[order=ASC]::after {
+                    content: url(../../../../../assets/icons/arrow-up.svg);
+                }
+    
+                &[order=DESC]::after {
+                    content: url(../../../../../assets/icons/arrow-down.svg);
+                }
+    
+                &[order=ASC]::after, 
+                &[order=DESC]::after {
+                    filter: $filter-red;
+                    display: inline-block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translate(-10px, -8px);
+                    height: 0;
+                    width: 0;
+                }
+            }
         }
     }
     

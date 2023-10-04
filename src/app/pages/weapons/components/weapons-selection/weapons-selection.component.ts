@@ -15,7 +15,7 @@ export class WeaponsSelectionComponent {
 
   constructor(public weaponService: WeaponService) {
     this.$expand = signal(false)
-    this.$weapons = this.weaponService.$selectedWeapons
+    this.$weapons = weaponService.$selectedWeapons
     this.$minSelections = computed(() => this.$weapons().length >= 2)
     this.$expanded = computed(() => this.$expand() && this.$minSelections())
   }
