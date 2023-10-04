@@ -1,81 +1,71 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
 ng-select {
-    .ng-select-container {
-        height: 40px !important;
-        min-width: 100px;
-        padding: 5px;
-        padding-left: 10px !important;
-        background-color: $light-gray;
-        border: 1px solid $black;
-        border-radius: 2px;
-        cursor: pointer !important;
+    font-family: secondary;
+    font-size: 20px;
 
-        &::placeholder {
-            color: $light-gray;
-        }
-
-        input {
-            cursor: pointer !important;
+    .scroll-host {
+        &::-webkit-scrollbar {
+            display: block;
+            width: 10px;
         }
         
-        .ng-value-container {
-            color: $dark-gray;
-            padding-left: 8px;
-            gap: 8px;
-            height: 30px;
-            cursor: pointer !important;
-
-            .ng-value {
-                display: flex;
-                align-items: center;
-                gap: 2px;
+        &::-webkit-scrollbar-button {
+            display: none;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background: $red;
+            border-radius: 20px;
+        
+            &:hover {
+                background: $dark-red; 
             }
-
-            .ng-placeholder {
-                color: $dark-gray;
-            }
+        }
+        
+        &::-webkit-scrollbar-track {
+            background: transparent;
         }
     }
 
-    .ng-dropdown-panel {
-        .ng-option {
-            padding: 3px 5px;
-            border-left: 1px solid $black;
-            border-right: 1px solid $black;
-            border-bottom: 1px solid $black;
-            background: $light-gray;
-            color: $black;
-    
-            &.ng-option-marked {
-                color: $light-gray;
-                background: $black;
+    .ng-value {
+        font-size: 24px;
+        padding-top: 5px;
+    }
+
+    .ng-clear-wrapper {
+        &:hover {
+            .ng-clear {
+                color: $red !important;
             }
         }
+        
+        .ng-clear {
+            font-size: 30px !important;
+            padding-top: 10px;
+            transition-duration: .2s;
+        }
+    }
 
-        .ng-option-disabled {
-            @extend .ng-option;
-            color: $dark-red;
+
+    .ng-optgroup {
+        background-color: rgba($light-red, 0.2) !important;
+        transition-duration: .2s;
+
+        &:hover {
+            background-color: rgba($dark-red, 0.2) !important;
         }
-    
-        .ng-clear-wrapper {
-            transform: translateY(7px);
-            color: $black;
+    }
+
+    .ng-option {
+        transition-duration: .2s;
+        
+        &:hover {
+            background-color: rgba($light-red, 0.2) !important;
         }
-    
-        .ng-footer-tmp {
-            display: flex;
-            justify-content:space-between;
-            align-items: center;
-            width: 100%;
-            padding: 3px 5px;
-            background-color: $light-gray;
-            border: 1px solid $black;
-            color: $black;
-            border-color: $black;
-            font-weight: 500;
-            text-transform: uppercase;
-            cursor: pointer;
+
+        &.ng-option-selected {
+            background-color: rgba($dark-red, 0.2) !important;
         }
     }
 }

@@ -4,12 +4,18 @@
             [items]="weapons$ | async"
             bindLabel="displayName"
             notFoundText="No weapons found"
-            (change)="selectedWeapons$.next($event?.uuid ? [$event.uuid] : ($event || []))"
+            (change)="selected$.next($event?.uuid ? [$event.uuid] : ($event || []))"
             [groupBy]="groupByFn"
             [selectableGroup]="true"
             [groupValue]="groupValueFn"
             [searchable]="true"
-            placeholder="Type to search..."/>
+            (search)="search$.next($event.items)"
+            placeholder="Type to search...">
+            <ng-template ng-option-tmp let-weapon="item">
+                <img [src]="weapon.displayIcon" width="40px" class="me-3">
+                {{ weapon.displayName }}
+            </ng-template>
+        </ng-select>
     </div>
 
     <button (click)="$expanded.set(!$expanded())" class="expand position-absolute bg-black p-2">
