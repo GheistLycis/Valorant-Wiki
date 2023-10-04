@@ -3,11 +3,12 @@
         <ng-select
             [items]="weapons$ | async"
             bindLabel="displayName"
-            bindValue="uuid"
             notFoundText="No weapons found"
-            (change)="selectedWeapon$.next($event)"
+            (change)="selectedWeapons$.next($event?.uuid ? [$event.uuid] : ($event || []))"
             [groupBy]="groupByFn"
-            [typeahead]="nameSearch$"
+            [selectableGroup]="true"
+            [groupValue]="groupValueFn"
+            [searchable]="true"
             placeholder="Type to search..."/>
     </div>
 

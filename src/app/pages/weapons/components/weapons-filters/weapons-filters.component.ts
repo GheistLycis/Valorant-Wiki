@@ -1,7 +1,7 @@
 import { Component, WritableSignal, signal } from '@angular/core';
 import { Weapon } from '@interfaces/Weapon';
 import { WeaponService } from '@services/weapon.service';
-import { Observable, Subject, combineLatest, startWith, distinctUntilChanged, map } from 'rxjs';
+import { Observable, Subject, combineLatest, startWith, map } from 'rxjs';
 
 @Component({
   selector: 'app-weapons-filters',
@@ -11,26 +11,21 @@ import { Observable, Subject, combineLatest, startWith, distinctUntilChanged, ma
 export class WeaponsFiltersComponent {
   $expanded!: WritableSignal<boolean>
   weapons$!: Observable<Weapon[]>
-  nameSearch$!: Subject<string>
-  selectedWeapon$!: Subject<Weapon>
+  selectedWeapons$!: Subject<Weapon['uuid'][]>
   filteredWeapons$!: Observable<Weapon[]>
 
   constructor(private weaponService: WeaponService) {
     this.$expanded = signal(false)
     this.weapons$ = this.weaponService.list()
-    this.nameSearch$ = new Subject()
-    this.selectedWeapon$ = new Subject()
+    this.selectedWeapons$ = new Subject()
     this.filteredWeapons$ = combineLatest({
       weapons: this.weapons$,
-      search: this.nameSearch$.pipe(startWith(undefined), map(search => search?.toLowerCase().trim()), distinctUntilChanged()), 
-      id: this.selectedWeapon$.pipe(startWith(undefined), map(weapon => weapon?.uuid)),
+      ids: this.selectedWeapons$.pipe(
+        startWith([] as string[]), 
+      ),
     }).pipe(
-      map(({ weapons, search, id }) => weapons
-        .filter(({ uuid, displayName }) => {
-          if(id) return uuid == id
-          else if(search) return displayName.toLowerCase().includes(search)
-          else return true
-        })
+      map(({ weapons, ids }) => weapons
+        .filter(({ uuid }) => ids.length ? ids.includes(uuid) : true)
         .sort((a, b) => a.displayName < b.displayName ? -1 : 1)
       ),
     )
@@ -40,5 +35,9 @@ export class WeaponsFiltersComponent {
 
   groupByFn(weapon: Weapon): string {
     return (weapon.shopData?.category || 'Melee').toUpperCase()
+  }
+
+  groupValueFn(label: string, children: Weapon[]): string[] {
+    return children.map(({ uuid }) => uuid)
   }
 }
