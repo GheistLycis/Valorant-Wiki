@@ -23,7 +23,7 @@ export class WeaponsAnalysisComponent {
     this.$weapons = weaponService.$selectedWeapons
     this.$selectedWeapon = signal(this.$weapons()[0])
     this.$advantages = computed(() => {
-      return Array(200).fill('test')
+      return Array(5).fill('test')
     })
   }
 }
