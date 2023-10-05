@@ -12,8 +12,9 @@
 				<app-damage-chart [weapon]="weapon"/>
 			</div>
 			<ul class="w-100">
-				<li *ngFor="let item of $advantages()">
-					{{ item }}
+				<li *ngFor="let item of $advantages()" class="mb-2">
+					<p class="m-0">{{ item.title }}</p>
+					<small [innerHTML]="item.detail" class="ms-3 text-dark-gray"></small>
 				</li>
 			</ul>
 		</ng-template>
