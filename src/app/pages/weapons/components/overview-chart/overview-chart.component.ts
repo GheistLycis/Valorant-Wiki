@@ -22,7 +22,6 @@ export class OverviewChartComponent {
         'AVG DMG Legs',
         'Magazine Size',
         'Fire Rate (/s)',
-        'Range (m)',
         'Reload Time (s)'
       ],
       datasets: this.$weapons().map(({ displayName, weaponStats, uuid }) => {
@@ -35,7 +34,6 @@ export class OverviewChartComponent {
             (damageRanges.reduce((acc, { legDamage }) => acc += legDamage, 0)) / (damageRanges.length),
             magazineSize,
             fireRate,
-            damageRanges.reduce((acc, { rangeEndMeters }) => acc = Math.max(rangeEndMeters, acc), 0),
             reloadTimeSeconds
           ],
           order: uuid == this.$selectedWeapon().uuid ? 0 : 1,
