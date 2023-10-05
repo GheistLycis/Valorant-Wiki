@@ -26,15 +26,15 @@ export class WeaponsAnalysisComponent {
     const selected = this.$selectedWeapon()
     const others = this.$weapons().filter(({ uuid }) => uuid != selected.uuid)
     
+    this.checkCost(selected, others, advantages)
     this.checkEffectiveRange(selected, others, advantages)
-    this.checkWallPenetration(selected, others, advantages)
     this.checkFirstBulletAcc(selected, others, advantages)
-    this.checkReloadTime(selected, others, advantages)
-    this.checkEquipTime(selected, others, advantages)
-    this.checkRunSpeedMultiplier(selected, others, advantages)
     this.checkMagazineSize(selected, others, advantages)
     this.checkFireRate(selected, others, advantages)
-    this.checkCost(selected, others, advantages)
+    this.checkReloadTime(selected, others, advantages)
+    this.checkEquipTime(selected, others, advantages)
+    this.checkWallPenetration(selected, others, advantages)
+    this.checkRunSpeedMultiplier(selected, others, advantages)
     this.checkSkinsNumber(selected, others, advantages)
 
     return advantages
