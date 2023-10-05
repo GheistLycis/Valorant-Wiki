@@ -19,32 +19,30 @@ export class SortDirective implements AfterContentInit {
     ngAfterContentInit(): void {
         this.elements = this.host.querySelectorAll('[sortBy]')
         
-        this.elements.forEach((el, i) => {
+        this.elements.forEach(el => {
             el.classList.add('pointer')
             el.setAttribute('order', '')
-            el.onclick = this.sorting.bind(this, el, i)
+            el.onclick = this.sorting.bind(this, el)
         })
     }
 
-    sorting(el: HTMLElement, index: number): void {
+    sorting(el: HTMLElement): void {
         const sort = el.getAttribute('sortBy') as SortEvent['sort']
-        const oldOrder = el.getAttribute('order') as keyof typeof SortOrder 
+        let order = el.getAttribute('order') as keyof typeof SortOrder 
 
-        el.setAttribute('order', SortOrder[oldOrder])
-        if(el.getAttribute('order') != '') {
-            el.classList.add('active')
-        }
-        else {
-            el.classList.remove('active')
-        }
-
-        this.elements.forEach((el, i) => {
-            if(i != index) {
-                el.setAttribute('order', '')
-                el.classList.remove('active')
+        // UPDATING CLICKED ELEMENT
+        el.setAttribute('order', SortOrder[order])
+        order = el.getAttribute('order') as keyof typeof SortOrder 
+        order ? el.classList.add('active') : el.classList.remove('active')
+        
+        // UPDATING OTHER ELEMENTS
+        this.elements.forEach(element => {
+            if(element != el) {
+                element.setAttribute('order', '')
+                element.classList.remove('active')
             }
         })
 
-        this.sort.emit({ sort, order: el.getAttribute('order') as keyof typeof SortOrder })
+        this.sort.emit({ sort, order })
     }
 }
