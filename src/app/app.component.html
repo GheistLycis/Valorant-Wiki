@@ -3,10 +3,10 @@
 </svg>
 <div class="vh-100 d-flex flex-column justify-content-between position-relative">
     <app-navbar/>
-    <app-weapons-filters/>
+    <app-weapons-filters *ngIf="router.url.endsWith('weapons')"/>
     <div class="content h-100 overflow-scroll p-4 mx-5 my-4">
         <router-outlet/>
     </div>
-    <app-weapons-selection/>
+    <app-weapons-selection *ngIf="router.url.endsWith('weapons')"/>
     <app-footer/>
 </div>
