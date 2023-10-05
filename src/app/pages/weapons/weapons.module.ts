@@ -8,6 +8,8 @@ import { NgChartsModule } from 'ng2-charts';
 import { WeaponsFiltersComponent } from './components/weapons-filters/weapons-filters.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SortDirective } from '@directives/sort';
+import { OverviewChartComponent } from './components/overview-chart/overview-chart.component';
+import { DamageChartComponent } from './components/damage-chart/damage-chart.component';
 
 
 
@@ -17,6 +19,8 @@ import { SortDirective } from '@directives/sort';
     WeaponsSelectionComponent,
     WeaponsAnalysisComponent,
     WeaponsFiltersComponent,
+    OverviewChartComponent,
+    DamageChartComponent,
   ],
   imports: [
     CommonModule,

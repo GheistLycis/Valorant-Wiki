@@ -13,18 +13,16 @@
 					{{ item }}
 				</li>
 			</ul>
+			<div class="w-100">
+				<app-damage-chart/>
+			</div>
 		</ng-template>
 	</li>
 </ul>
 
-<div class="content h-100 w-100 d-flex gap-40px p-3 text-black">
-	<div class="d-flex justify-content-center align-items-center h-100 w-50">
-		<canvas
-			baseChart
-			type="radar"
-			[data]="$data()"
-			[options]="options">
-		</canvas>
+<div class="content h-100 w-100 d-flex p-3 text-black">
+	<div class="d-flex justify-content-center align-items-center w-50 h-100">
+		<app-overview-chart [weapons]="$weapons" [selectedWeapon]="$selectedWeapon"/>
 	</div>
-	<div [ngbNavOutlet]="nav" class="h-100 w-50 ff-secondary overflow-scroll"></div>
+	<div [ngbNavOutlet]="nav" class="w-50 h-100 ff-secondary overflow-scroll"></div>
 </div>
