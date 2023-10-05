@@ -9,7 +9,7 @@
 				Why is <span class="mx-2 text-uppercase text-dark-red">// {{ $selectedWeapon().displayName }} //</span> better?
 			</h2>
 			<div class="w-100 mt-4 mb-3">
-				<app-damage-chart [selectedWeapon]="$selectedWeapon"/>
+				<app-damage-chart [weapon]="weapon"/>
 			</div>
 			<ul class="w-100">
 				<li *ngFor="let item of $advantages()">

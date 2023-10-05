@@ -1,4 +1,4 @@
-import { Component, Input, Signal, WritableSignal, computed } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { palette } from '@enums/palette';
 import { Weapon } from '@interfaces/Weapon';
 import { ChartData, ChartOptions } from 'chart.js';
@@ -8,33 +8,12 @@ import { ChartData, ChartOptions } from 'chart.js';
   templateUrl: './damage-chart.component.html',
   styleUrls: ['./damage-chart.component.scss']
 })
-export class DamageChartComponent {
-  @Input('selectedWeapon') $selectedWeapon!: WritableSignal<Weapon>
-  $data!: Signal<ChartData<'line', any[], string>>
+export class DamageChartComponent implements OnInit {
+  @Input('weapon') weapon!: Weapon
+  data!: ChartData<'line', number[], string>
   options!: ChartOptions<'line'>
 
   constructor() {
-    this.$data = computed(() => {
-      const { damageRanges } = this.$selectedWeapon().weaponStats!
-
-      return {
-        labels: damageRanges.map(range => `${range.rangeStartMeters} - ${range.rangeEndMeters}`),
-        datasets: [
-          {
-            label: 'Head',
-            data: damageRanges.map(range =>  range.headDamage),
-          },
-          {
-            label: 'Body',
-            data: damageRanges.map(range => range.bodyDamage),
-          },
-          {
-            label: 'Leg',
-            data: damageRanges.map(range => range.legDamage),
-          },
-        ]
-      }
-    })
     this.options = {
       color: palette['dark-gray'],
       scales: {
@@ -105,6 +84,28 @@ export class DamageChartComponent {
           },
         },
       },
+    }
+  }
+
+  ngOnInit(): void {
+    const { damageRanges } = this.weapon.weaponStats!
+
+    this.data = {
+      labels: damageRanges.map(range => `${range.rangeStartMeters} - ${range.rangeEndMeters}`),
+      datasets: [
+        {
+          label: 'Head',
+          data: damageRanges.map(range =>  range.headDamage),
+        },
+        {
+          label: 'Body',
+          data: damageRanges.map(range => range.bodyDamage),
+        },
+        {
+          label: 'Leg',
+          data: damageRanges.map(range => range.legDamage),
+        },
+      ]
     }
   }
 }
