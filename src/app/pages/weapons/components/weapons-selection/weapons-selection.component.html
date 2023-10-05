@@ -19,10 +19,10 @@
 
     <div class="actions d-flex gap-20px align-items-center ms-3">
         <button (click)="weaponService.clearSelection()" class="p-2">
-            <img src="assets/icons/trash.svg" width="30px">
+            <img src="assets/icons/trash.svg" width="25px">
         </button>
         <button (click)="$expand.set(!$expand())" [disabled]="!$minSelections()" class="p-2">
-            <img src="assets/icons/arrow-up.svg" width="30px" [ngClass]="{'rotate': $expanded()}">
+            <img src="assets/icons/arrow-up.svg" width="25px" [ngClass]="{'rotate': $expanded()}">
         </button>
     </div>
 </div>

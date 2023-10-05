@@ -4,30 +4,6 @@ ng-select {
     font-family: secondary;
     font-size: 20px;
 
-    .scroll-host {
-        &::-webkit-scrollbar {
-            display: block;
-            width: 10px;
-        }
-        
-        &::-webkit-scrollbar-button {
-            display: none;
-        }
-        
-        &::-webkit-scrollbar-thumb {
-            background: $red;
-            border-radius: 20px;
-        
-            &:hover {
-                background: $dark-red; 
-            }
-        }
-        
-        &::-webkit-scrollbar-track {
-            background: transparent;
-        }
-    }
-
     .ng-value {
         font-size: 24px;
         padding-top: 5px;
@@ -46,7 +22,6 @@ ng-select {
             transition-duration: .2s;
         }
     }
-
 
     .ng-optgroup {
         background-color: rgba($light-red, 0.2) !important;
