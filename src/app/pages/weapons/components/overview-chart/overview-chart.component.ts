@@ -48,7 +48,7 @@ export class OverviewChartComponent {
       elements: {
         line: {
           borderWidth: 3,
-          tension: 0.5,
+          tension: 0.3,
         },
         point: {
           borderWidth: 0,
