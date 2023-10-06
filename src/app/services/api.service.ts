@@ -4,6 +4,7 @@ import { apiLangs } from '../types/api-langs.type';
 import { ApiResponse as Res } from '@interfaces/api-response.interface';
 import { map } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,15 +19,15 @@ export class ApiService {
     this.defaultLang = 'en-US'
   }
 
-  get<T>(endpoint: string, id: string, language = this.defaultLang) {
+  get<T>(endpoint: string, id: string, language = this.defaultLang, extras?: Object) {
     return this.http
-      .get<Res<T>>(`${this.apiUrl}/${endpoint}/${id}?language=${language}`)
+      .get<Res<T>>(`${this.apiUrl}/${endpoint}/${id}?language=${language}${this.queryMaker(extras)}`)
       .pipe(map(({ data }) => data))
   }
 
-  list<T>(endpoint: string, language = this.defaultLang) {
+  list<T>(endpoint: string, language = this.defaultLang, extras?: Object) {
     return this.http
-      .get<Res<T[]>>(`${this.apiUrl}/${endpoint}?language=${language}`)
+      .get<Res<T[]>>(`${this.apiUrl}/${endpoint}?language=${language}${this.queryMaker(extras)}`)
       .pipe(map(({ data }) => data))
   }
 
@@ -34,5 +35,18 @@ export class ApiService {
     return this.http
       .get(endpoint, { responseType: 'blob' })
       .pipe(map(blob => URL.createObjectURL(blob)))
+  }
+
+  private queryMaker(query?: Object): string {
+    if(!query) return ''
+    
+    return '&' + Object.entries(query)
+      .filter(([ key, val ]) => {
+        if(Array.isArray(val)) return val.length
+        if(val == 0) return true
+        else return val
+      })
+      .map(([ key, val ]) => key + '=' + val)
+      .join('&')
   }
 }
