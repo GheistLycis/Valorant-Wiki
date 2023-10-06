@@ -1,8 +1,9 @@
-import { Component, WritableSignal, signal } from '@angular/core';
+import { Component, DestroyRef, WritableSignal, inject, signal } from '@angular/core';
 import { SortEvent } from '@interfaces/SortEvent';
 import { Weapon } from '@interfaces/Weapon';
 import { WeaponService } from '@services/weapon.service';
-import { Observable, Subject, combineLatest, startWith, map, debounceTime, distinctUntilChanged } from 'rxjs';
+import { Observable, Subject, combineLatest, startWith, map, debounceTime, distinctUntilChanged, tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-weapons-filters',
@@ -69,7 +70,9 @@ export class WeaponsFiltersComponent {
       ),
     )
 
-    this.filteredWeapons$.subscribe(list => weaponService.$filteredWeapons.set(list))
+    this.filteredWeapons$.pipe(
+      takeUntilDestroyed(inject(DestroyRef)),
+    ).subscribe(list => weaponService.$filteredWeapons.set(list))
   }
 
   groupByFn(weapon: Weapon): string {
