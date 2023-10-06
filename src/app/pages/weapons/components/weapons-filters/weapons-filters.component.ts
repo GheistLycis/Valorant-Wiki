@@ -30,14 +30,14 @@ export class WeaponsFiltersComponent {
         startWith([] as Weapon[]),
         debounceTime(300),
         distinctUntilChanged(),
-        map(weapons => weapons.map(({ uuid }) => uuid))
+        map(weapons => weapons.map(({ uuid }) => uuid)),
       ),
       selected: this.selected$.pipe(
         startWith([] as string[]),
       ),
       sort: this.sort$.pipe(
-        startWith(undefined)
-      )
+        startWith(undefined),
+      ),
     }).pipe(
       map(({ weapons, searched, selected, sort }) => weapons
         .filter(({ uuid }) => {

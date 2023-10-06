@@ -10,7 +10,7 @@ import { WeaponService } from '@services/weapon.service';
   styleUrls: ['./weapons.component.scss']
 })
 export class WeaponsComponent {
-  $weapons!: WritableSignal<Weapon[]>
+  $weapons!: WritableSignal<Weapon[] | undefined>
 
   constructor(
     public weaponService: WeaponService,

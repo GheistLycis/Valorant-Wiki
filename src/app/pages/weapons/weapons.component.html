@@ -1,4 +1,7 @@
-<div class="row">
+<div class="row h-100">
+    <div *ngIf="$weapons() == undefined" class="w-100 h-100 d-flex justify-content-center align-items-center">
+        <span class="spinner-grow"></span>
+    </div>
     <div 
         *ngFor="let weapon of $weapons(); trackBy: trackByFn"
         class="weapon-card position-relative col-sm-12 col-md-6 col-lg-4 p-2 ff-secondary"

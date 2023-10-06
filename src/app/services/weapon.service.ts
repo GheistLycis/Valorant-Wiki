@@ -11,13 +11,13 @@ export class WeaponService {
   apiEndpoint!: string
   cachedWeapons!: Weapon[]
   $selectedWeapons!: WritableSignal<Weapon[]>
-  $filteredWeapons!: WritableSignal<Weapon[]>
+  $filteredWeapons!: WritableSignal<Weapon[] | undefined>
 
   constructor(private api: ApiService) {
     this.apiEndpoint = 'weapons'
     this.cachedWeapons = []
     this.$selectedWeapons = signal([])
-    this.$filteredWeapons = signal([])
+    this.$filteredWeapons = signal(undefined)
   }
 
   get(id: string, language?: apiLangs): Observable<Weapon> {
