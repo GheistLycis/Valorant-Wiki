@@ -53,6 +53,10 @@ export class OverviewChartComponent implements OnChanges {
             padding: 20,
             usePointStyle: true,
             pointStyle: 'circle',
+            font: {
+              family: 'secondary',
+              size: 18,
+            },
           },
         },
         tooltip: {

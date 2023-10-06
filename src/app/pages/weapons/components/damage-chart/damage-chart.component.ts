@@ -71,6 +71,10 @@ export class DamageChartComponent implements OnInit {
             padding: 20,
             usePointStyle: true,
             pointStyle: 'circle',
+            font: {
+              family: 'secondary',
+              size: 16,
+            },
           },
         },
         tooltip: {
