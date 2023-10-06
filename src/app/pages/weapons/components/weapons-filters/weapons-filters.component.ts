@@ -52,7 +52,7 @@ export class WeaponsFiltersComponent {
           else {
             const value = sort.order == 'ASC' ? -1 : 1 
 
-            switch(sort.sort) {
+            switch(sort.sort as 'cost' | 'range' | 'fire-rate' | 'magazine') {
               case 'cost':
                 return (a.shopData?.cost || 0) < (b.shopData?.cost || 0) ? value : -value
                 

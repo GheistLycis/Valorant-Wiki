@@ -1,0 +1,40 @@
+<div class="content d-flex gap-30px position-absolute" [ngClass]="{'expanded': $expanded()}">
+    <div 
+        class="filters d-flex justify-content-start align-items-center gap-50px ps-5 py-2 bg-black w-100"
+        [ngClass]="{'d-none': !$expanded()}">
+        <ng-select
+            [items]="agents$ | async"
+            bindLabel="displayName"
+            notFoundText="No agents found"
+            (change)="selected$.next($event?.uuid ? [$event.uuid] : ($event || []))"
+            [groupBy]="groupByFn"
+            [selectableGroup]="true"
+            [groupValue]="groupValueFn"
+            [searchable]="true"
+            (search)="search$.next($event.items)"
+            placeholder="Type to search...">
+            <ng-template ng-option-tmp let-agent="item">
+                <img [src]="agent.bustPortrait" width="40px" class="me-3">
+                {{ agent.displayName }}
+            </ng-template>
+        </ng-select>
+
+        <div class="order-by d-flex gap-30px align-items-center ff-secondary">
+            ORDER BY:
+
+            <div appSort (sort)="sort$.next($event)" class="d-flex gap-20px">
+                <span sortBy='name'>
+                    NAME
+                </span>
+                |
+                <span sortBy='role'>
+                    ROLE
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <button (click)="$expanded.set(!$expanded())" class="expand position-absolute bg-black p-2">
+        <img src="assets/icons/arrow-down.svg" width="20px" class="filter-white" [ngClass]="{'rotate': $expanded()}">
+    </button>
+</div>

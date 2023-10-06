@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
 import { HomeComponent } from './home/home.component';
-import { AgentsComponent } from './agents/agents.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { WeaponsModule } from './weapons/weapons.module';
+import { AgentsModule } from './agents/agents.module';
 
 
 
@@ -12,12 +12,12 @@ import { WeaponsModule } from './weapons/weapons.module';
   declarations: [
     NotFoundComponent,
     HomeComponent,
-    AgentsComponent,
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     WeaponsModule,
+    AgentsModule
   ]
 })
 export class PagesModule { }

@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ErrorsInterceptor } from './interceptors/errors.interceptor';
 import { WeaponsModule } from './pages/weapons/weapons.module';
+import { AgentsModule } from './pages/agents/agents.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { WeaponsModule } from './pages/weapons/weapons.module';
 
     AppRoutingModule,
     WeaponsModule,
+    AgentsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorsInterceptor, multi: true },

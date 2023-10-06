@@ -8,7 +8,7 @@ import { Observable, iif, of, tap } from "rxjs"
 @Injectable({
     providedIn: 'root'
 })
-export class WeaponService {
+export class AgentService {
     apiEndpoint!: string
     cachedAgents!: Agent[]
     $filteredAgents!: WritableSignal<Agent[] | undefined>

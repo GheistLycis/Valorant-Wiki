@@ -16,7 +16,7 @@ export class SortDirective implements AfterViewInit {
         this.sort = new EventEmitter()
         this.host = element.nativeElement
     }
-    
+
     ngAfterViewInit(): void {
         this.children = this.host.querySelectorAll('[sortBy]')
         

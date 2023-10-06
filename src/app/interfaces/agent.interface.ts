@@ -24,7 +24,7 @@ export interface Agent {
         displayIcon: string
         assetPath: string
     }
-    recruitmentData: {
+    recruitmentData?: {
         counterId: string
         milestoneId: string
         milestoneThreshold: number
@@ -39,7 +39,7 @@ export interface Agent {
         description: string
         displayIcon: string
     }[]
-    voiceLine: {
+    voiceLine?: {
         minDuration: number
         maxDuration: number
         mediaList: {
