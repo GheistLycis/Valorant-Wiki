@@ -70,7 +70,7 @@ export class AgentsFiltersComponent {
   }
 
   groupByFn(agent: Agent): string {
-    return (agent.role.displayName).toUpperCase()
+    return agent.role.displayName.toUpperCase()
   }
 
   groupValueFn(groupKey: string, children: Agent[]): string[] {
