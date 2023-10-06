@@ -31,7 +31,7 @@ export class DamageChartComponent implements OnInit {
             color: palette['dark-gray'],
             font: {
               family: 'secondary',
-              size: 16,
+              size: 18,
             },
           }
         },
@@ -49,7 +49,7 @@ export class DamageChartComponent implements OnInit {
             color: palette['dark-gray'],
             font: {
               family: 'secondary',
-              size: 16,
+              size: 18,
             },
           }
         },
@@ -59,8 +59,8 @@ export class DamageChartComponent implements OnInit {
           tension: 0.3,
         },
         point: {
-          radius: 3,
-          hoverRadius: 6,
+          radius: 10,
+          hoverRadius: 14,
           borderWidth: 0,
         },
       },
@@ -96,14 +96,20 @@ export class DamageChartComponent implements OnInit {
         {
           label: 'Head',
           data: damageRanges.map(range =>  range.headDamage),
+          borderColor: `rgba(200, 0, 0, 0.4)`,
+          pointBackgroundColor: `rgb(200, 0, 0)`,
         },
         {
           label: 'Body',
           data: damageRanges.map(range => range.bodyDamage),
+          borderColor: `rgba(200, 100, 0, 0.5)`,
+          pointBackgroundColor: `rgb(200, 100, 0)`,
         },
         {
           label: 'Leg',
           data: damageRanges.map(range => range.legDamage),
+          borderColor: `rgba(200, 200, 0, 0.6)`,
+          pointBackgroundColor: `rgb(200, 200, 0)`,
         },
       ]
     }

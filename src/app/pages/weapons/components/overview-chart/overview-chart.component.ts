@@ -15,28 +15,40 @@ export class OverviewChartComponent {
   options!: ChartOptions<'radar'>
 
   constructor() {
+    const colors = [
+      '200, 0, 0', // red
+      '0, 200, 0', // green
+      '0, 0, 200', // blue
+      '200, 200, 0', // yellow
+      '200, 0, 200', // purple
+      '0, 200, 200', // cyan
+    ]
+
     this.$data = computed(() => ({
       labels: [
-        'AVG DMG Head',
-        'AVG DMG Body',
-        'AVG DMG Legs',
+        'Cost',
         'Magazine Size',
         'Fire Rate (/s)',
-        'Reload Time (s)'
+        'Reload Time (/s)',
+        'Equip Time (/s)',
       ],
-      datasets: this.$weapons().map(({ displayName, weaponStats, uuid }) => {
-        const { damageRanges, magazineSize, fireRate, reloadTimeSeconds } = weaponStats!
+      
+      datasets: this.$weapons().map(({ displayName, weaponStats, shopData, uuid }, i) => {
+        const color = i < colors.length ? colors[i] : colors[i % colors.length]
+        const { magazineSize, fireRate, reloadTimeSeconds, equipTimeSeconds } = weaponStats!
         const dataset: ChartDataset<'radar', number[]> = {
           label: displayName,
           data: [
-            (damageRanges.reduce((acc, { headDamage }) => acc += headDamage, 0)) / (damageRanges.length),
-            (damageRanges.reduce((acc, { bodyDamage }) => acc += bodyDamage, 0)) / (damageRanges.length),
-            (damageRanges.reduce((acc, { legDamage }) => acc += legDamage, 0)) / (damageRanges.length),
+            shopData!.cost,
             magazineSize,
             fireRate,
-            reloadTimeSeconds
+            reloadTimeSeconds,
+            equipTimeSeconds,
           ],
           order: uuid == this.$selectedWeapon().uuid ? 0 : 1,
+          backgroundColor: `rgba(${color}, 0.6)`,
+          borderColor: `rgba(${color}, 1)`,
+          pointBackgroundColor: `rgba(${color}, 1)`,
         }
 
         return dataset

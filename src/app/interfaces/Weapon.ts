@@ -18,14 +18,14 @@ export interface Weapon {
         feature: string
         fireMode: string
         altFireType: string
-        adsStats: {
+        adsStats?: {
             zoomMultiplier: number
             fireRate: number
             runSpeedMultiplier: number
             burstCount: number
             firstBulletAccuracy: number
         }
-        altShotgunStats: {
+        altShotgunStats?: {
             shotgunPelletCount: number
             burstRate: number
         }
