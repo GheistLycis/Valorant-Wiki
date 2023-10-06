@@ -1,6 +1,7 @@
 import { Component, Signal, WritableSignal, computed, signal } from '@angular/core';
 import { Weapon } from '@interfaces/Weapon';
 import { WeaponService } from '@services/weapon.service';
+import { Observable } from 'rxjs';
 
 
 type advantage = { title: string, detail: string }
@@ -11,49 +12,33 @@ type advantage = { title: string, detail: string }
   styleUrls: ['./weapons-analysis.component.scss']
 })
 export class WeaponsAnalysisComponent {
-  $weapons!: WritableSignal<Weapon[]>
+  weapons$!: Observable<Weapon[]>
+  $selectedWeapons!: WritableSignal<Weapon[]>
   $selectedWeapon!: WritableSignal<Weapon>
   $advantages!: Signal<advantage[]>
 
   constructor(public weaponService: WeaponService) {
-    this.$weapons = weaponService.$selectedWeapons
-    this.$selectedWeapon = signal(this.$weapons()[0])
+    this.weapons$ = weaponService.list()
+    this.$selectedWeapons = weaponService.$selectedWeapons
+    this.$selectedWeapon = signal(this.$selectedWeapons()[0])
     this.$advantages = computed(() => this.getAdvantages())
   }
 
   getAdvantages(): advantage[] {
     const advantages: advantage[] = []
     const selected = this.$selectedWeapon()
-    const others = this.$weapons().filter(({ uuid }) => uuid != selected.uuid)
+    const others = this.$selectedWeapons().filter(({ uuid }) => uuid != selected.uuid)
     
     this.checkCost(selected, others, advantages)
-    this.checkEffectiveRange(selected, others, advantages)
-    this.checkFirstBulletAcc(selected, others, advantages)
     this.checkMagazineSize(selected, others, advantages)
     this.checkFireRate(selected, others, advantages)
     this.checkReloadTime(selected, others, advantages)
     this.checkEquipTime(selected, others, advantages)
+    this.checkFirstBulletAcc(selected, others, advantages)
     this.checkWallPenetration(selected, others, advantages)
     this.checkRunSpeedMultiplier(selected, others, advantages)
-    this.checkSkinsNumber(selected, others, advantages)
 
     return advantages
-  }
-
-  checkEffectiveRange(selected: Weapon, others: Weapon[], list: advantage[]): void {
-    const advantage = { title: 'Greater effective range', detail: '' }
-    const selectedData = selected.weaponStats!.damageRanges[0].rangeEndMeters
-    const othersData = others.map(({ displayName, weaponStats }) => ({ displayName, data: weaponStats!.damageRanges[0].rangeEndMeters }))
-
-    othersData.forEach(({ displayName, data }) => {
-      if(selectedData > data ) {
-        if(!advantage.detail) advantage.detail = `<b>${selectedData}m</b>`
-        
-        advantage.detail += ` vs <b>${data}m (${displayName})</b>`
-      }
-    })
-
-    if(advantage.detail) list.push(advantage)
   }
 
   checkWallPenetration(selected: Weapon, others: Weapon[], list: advantage[]): void {
@@ -179,22 +164,6 @@ export class WeaponsAnalysisComponent {
         if(!advantage.detail) advantage.detail = `<b>$${selectedData}</b>`
         
         advantage.detail += ` vs <b>$${data} (${displayName})</b>`
-      }
-    })
-
-    if(advantage.detail) list.push(advantage)
-  }
-
-  checkSkinsNumber(selected: Weapon, others: Weapon[], list: advantage[]): void {
-    const advantage = { title: 'More skins available', detail: '' }
-    const selectedData = selected.skins.length
-    const othersData = others.map(({ displayName, skins }) => ({ displayName, data: skins.length }))
-
-    othersData.forEach(({ displayName, data }) => {
-      if(selectedData > data) {
-        if(!advantage.detail) advantage.detail = `<b>${selectedData}</b>`
-        
-        advantage.detail += ` vs <b>${data} (${displayName})</b>`
       }
     })
 

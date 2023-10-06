@@ -102,8 +102,8 @@ export class DamageChartComponent implements OnInit {
         {
           label: 'Body',
           data: damageRanges.map(range => range.bodyDamage),
-          borderColor: `rgba(200, 100, 0, 0.5)`,
-          pointBackgroundColor: `rgb(200, 100, 0)`,
+          borderColor: `rgba(220, 80, 0, 0.5)`,
+          pointBackgroundColor: `rgb(220, 80, 0)`,
         },
         {
           label: 'Leg',

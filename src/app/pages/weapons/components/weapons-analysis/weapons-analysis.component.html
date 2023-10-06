@@ -1,5 +1,5 @@
 <ul ngbNav #nav="ngbNav" [activeId]="$selectedWeapon()" (activeIdChange)="$selectedWeapon.set($event)">
-	<li *ngFor="let weapon of $weapons()" [ngbNavItem]="weapon">
+	<li *ngFor="let weapon of $selectedWeapons()" [ngbNavItem]="weapon">
 		<button ngbNavLink>
 			{{ weapon.displayName | uppercase }}
 			<span (click)="weaponService.removeFromSelection(weapon)" class="x"></span>
@@ -8,7 +8,7 @@
 			<h2 class="text-center fw-bold">
 				Why is <span class="mx-2 text-uppercase text-dark-red">// {{ $selectedWeapon().displayName }} //</span> better?
 			</h2>
-			<div class="w-100 mt-4 mb-3">
+			<div class="w-100 mt-4 mb-3 px-5">
 				<app-damage-chart [weapon]="weapon"/>
 			</div>
 			<ul class="w-100">
@@ -23,7 +23,7 @@
 
 <div class="content h-100 w-100 d-flex p-3 text-black">
 	<div class="d-flex justify-content-center align-items-center w-50 h-100">
-		<app-overview-chart [weapons]="$weapons" [selectedWeapon]="$selectedWeapon"/>
+		<app-overview-chart [weapons]="weapons$ | async" [selectedWeapons]="$selectedWeapons" [selectedWeapon]="$selectedWeapon"/>
 	</div>
 	<div [ngbNavOutlet]="nav" class="w-50 h-100 ff-secondary overflow-scroll"></div>
 </div>
