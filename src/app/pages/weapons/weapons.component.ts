@@ -1,5 +1,5 @@
 import { Component, WritableSignal } from '@angular/core';
-import { Weapon } from '@interfaces/Weapon';
+import { Weapon } from '@interfaces/weapon.interface';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { WeaponService } from '@services/weapon.service';
 

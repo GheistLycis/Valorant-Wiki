@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { apiLangs } from '../types/apiLangs';
+import { apiLangs } from '../types/api-langs.type';
 import { Spray } from '@interfaces/Spray';
 
 @Injectable({

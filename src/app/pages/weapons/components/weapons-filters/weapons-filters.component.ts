@@ -1,6 +1,6 @@
 import { Component, WritableSignal, signal } from '@angular/core';
-import { SortEvent } from '@interfaces/SortEvent';
-import { Weapon } from '@interfaces/Weapon';
+import { SortEvent } from '@interfaces/sort-event.interface';
+import { Weapon } from '@interfaces/weapon.interface';
 import { WeaponService } from '@services/weapon.service';
 import { Observable, Subject, combineLatest, startWith, map, debounceTime, distinctUntilChanged } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

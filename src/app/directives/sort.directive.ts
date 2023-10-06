@@ -1,25 +1,26 @@
-import { AfterContentInit, Directive, ElementRef, EventEmitter, Output } from "@angular/core";
-import { SortOrder } from "@enums/sort-order";
-import { SortEvent } from "@interfaces/SortEvent";
+import { AfterViewInit, Directive, ElementRef, EventEmitter, Output } from "@angular/core";
+import { SortOrder } from "@enums/sort-order.enum";
+import { SortEvent } from "@interfaces/sort-event.interface";
 
 
 @Directive({
     selector: '[appSort]',
     standalone: true,
 })
-export class SortDirective implements AfterContentInit {
-    @Output() sort = new EventEmitter<SortEvent>()
+export class SortDirective implements AfterViewInit {
+    @Output() sort!: EventEmitter<SortEvent>
     host!: HTMLElement
-    elements!: NodeListOf<HTMLElement>
+    children!: NodeListOf<HTMLElement>
 
     constructor(private element: ElementRef<HTMLElement>) {
+        this.sort = new EventEmitter()
         this.host = element.nativeElement
     }
-
-    ngAfterContentInit(): void {
-        this.elements = this.host.querySelectorAll('[sortBy]')
+    
+    ngAfterViewInit(): void {
+        this.children = this.host.querySelectorAll('[sortBy]')
         
-        this.elements.forEach(el => {
+        this.children.forEach(el => {
             el.classList.add('pointer')
             el.setAttribute('order', '')
             el.onclick = this.sorting.bind(this, el)
@@ -36,10 +37,10 @@ export class SortDirective implements AfterContentInit {
         order ? el.classList.add('active') : el.classList.remove('active')
         
         // UPDATING OTHER ELEMENTS
-        this.elements.forEach(element => {
-            if(element != el) {
-                element.setAttribute('order', '')
-                element.classList.remove('active')
+        this.children.forEach(child => {
+            if(child != el) {
+                child.setAttribute('order', '')
+                child.classList.remove('active')
             }
         })
 

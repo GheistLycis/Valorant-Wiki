@@ -1,6 +1,6 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
-import { apiLangs } from '../types/apiLangs';
-import { Weapon } from '@interfaces/Weapon';
+import { apiLangs } from '../types/api-langs.type';
+import { Weapon } from '@interfaces/weapon.interface';
 import { ApiService } from './api.service';
 import { Observable, iif, of, tap } from 'rxjs';
 

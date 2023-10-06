@@ -1,5 +1,5 @@
 import { Component, Signal, WritableSignal, computed, signal } from '@angular/core';
-import { Weapon } from '@interfaces/Weapon';
+import { Weapon } from '@interfaces/weapon.interface';
 import { WeaponService } from '@services/weapon.service';
 
 @Component({

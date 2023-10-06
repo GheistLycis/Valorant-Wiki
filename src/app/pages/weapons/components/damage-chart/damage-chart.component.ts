@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { palette } from '@enums/palette';
-import { Weapon } from '@interfaces/Weapon';
+import { palette } from '@enums/palette.enum';
+import { Weapon } from '@interfaces/weapon.interface';
 import { ChartData, ChartOptions } from 'chart.js';
 
 @Component({

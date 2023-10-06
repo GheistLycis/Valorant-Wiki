@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, Signal, SimpleChanges, WritableSignal, computed } from '@angular/core';
-import { palette } from '@enums/palette';
-import { Weapon } from '@interfaces/Weapon';
+import { palette } from '@enums/palette.enum';
+import { Weapon } from '@interfaces/weapon.interface';
 import { ChartData, ChartDataset, ChartOptions } from 'chart.js';
 
 @Component({

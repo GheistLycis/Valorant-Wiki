@@ -1,10 +1,9 @@
 import { Component, Signal, WritableSignal, computed, signal } from '@angular/core';
-import { Weapon } from '@interfaces/Weapon';
+import { WeaponAdvantage } from '@interfaces/weapon-advantage.interface';
+import { Weapon } from '@interfaces/weapon.interface';
 import { WeaponService } from '@services/weapon.service';
 import { Observable } from 'rxjs';
 
-
-type advantage = { title: string, detail: string }
 
 @Component({
   selector: 'app-weapons-analysis',
@@ -15,7 +14,7 @@ export class WeaponsAnalysisComponent {
   weapons$!: Observable<Weapon[]>
   $selectedWeapons!: WritableSignal<Weapon[]>
   $selectedWeapon!: WritableSignal<Weapon>
-  $advantages!: Signal<advantage[]>
+  $advantages!: Signal<WeaponAdvantage[]>
 
   constructor(public weaponService: WeaponService) {
     this.weapons$ = weaponService.list()
@@ -24,8 +23,8 @@ export class WeaponsAnalysisComponent {
     this.$advantages = computed(() => this.getAdvantages())
   }
 
-  getAdvantages(): advantage[] {
-    const advantages: advantage[] = []
+  getAdvantages(): WeaponAdvantage[] {
+    const advantages: WeaponAdvantage[] = []
     const selected = this.$selectedWeapon()
     const others = this.$selectedWeapons().filter(({ uuid }) => uuid != selected.uuid)
     
@@ -41,7 +40,7 @@ export class WeaponsAnalysisComponent {
     return advantages
   }
 
-  checkWallPenetration(selected: Weapon, others: Weapon[], list: advantage[]): void {
+  checkWallPenetration(selected: Weapon, others: Weapon[], list: WeaponAdvantage[]): void {
     const rules = ['Low', 'Medium', 'High'] as const
     const advantage = { title: 'Better wall penetration', detail: '' }
     const selectedData = selected.weaponStats!.wallPenetration.replace('EWallPenetrationDisplayType::', '') as typeof rules[number]
@@ -58,7 +57,7 @@ export class WeaponsAnalysisComponent {
     if(advantage.detail) list.push(advantage)
   }
 
-  checkFirstBulletAcc(selected: Weapon, others: Weapon[], list: advantage[]): void {
+  checkFirstBulletAcc(selected: Weapon, others: Weapon[], list: WeaponAdvantage[]): void {
     const advantage = { title: 'Better 1st bullet accuracy', detail: '' }
     const selectedData = selected.weaponStats!.firstBulletAccuracy
     const othersData = others.map(({ displayName, weaponStats }) => ({ displayName, data: weaponStats!.firstBulletAccuracy }))
@@ -74,7 +73,7 @@ export class WeaponsAnalysisComponent {
     if(advantage.detail) list.push(advantage)
   }
 
-  checkReloadTime(selected: Weapon, others: Weapon[], list: advantage[]): void {
+  checkReloadTime(selected: Weapon, others: Weapon[], list: WeaponAdvantage[]): void {
     const advantage = { title: 'Faster to reload', detail: '' }
     const selectedData = selected.weaponStats!.reloadTimeSeconds
     const othersData = others.map(({ displayName, weaponStats }) => ({ displayName, data: weaponStats!.reloadTimeSeconds }))
@@ -90,7 +89,7 @@ export class WeaponsAnalysisComponent {
     if(advantage.detail) list.push(advantage)
   }
 
-  checkEquipTime(selected: Weapon, others: Weapon[], list: advantage[]): void {
+  checkEquipTime(selected: Weapon, others: Weapon[], list: WeaponAdvantage[]): void {
     const advantage = { title: 'Faster to equip', detail: '' }
     const selectedData = selected.weaponStats!.equipTimeSeconds
     const othersData = others.map(({ displayName, weaponStats }) => ({ displayName, data: weaponStats!.equipTimeSeconds }))
@@ -106,7 +105,7 @@ export class WeaponsAnalysisComponent {
     if(advantage.detail) list.push(advantage)
   }
 
-  checkRunSpeedMultiplier(selected: Weapon, others: Weapon[], list: advantage[]): void {
+  checkRunSpeedMultiplier(selected: Weapon, others: Weapon[], list: WeaponAdvantage[]): void {
     const advantage = { title: 'More run speed multiplier', detail: '' }
     const selectedData = selected.weaponStats!.runSpeedMultiplier
     const othersData = others.map(({ displayName, weaponStats }) => ({ displayName, data: weaponStats!.runSpeedMultiplier }))
@@ -122,7 +121,7 @@ export class WeaponsAnalysisComponent {
     if(advantage.detail) list.push(advantage)
   }
 
-  checkMagazineSize(selected: Weapon, others: Weapon[], list: advantage[]): void {
+  checkMagazineSize(selected: Weapon, others: Weapon[], list: WeaponAdvantage[]): void {
     const advantage = { title: 'More rounds per clip', detail: '' }
     const selectedData = selected.weaponStats!.magazineSize
     const othersData = others.map(({ displayName, weaponStats }) => ({ displayName, data: weaponStats!.magazineSize }))
@@ -138,7 +137,7 @@ export class WeaponsAnalysisComponent {
     if(advantage.detail) list.push(advantage)
   }
 
-  checkFireRate(selected: Weapon, others: Weapon[], list: advantage[]): void {
+  checkFireRate(selected: Weapon, others: Weapon[], list: WeaponAdvantage[]): void {
     const advantage = { title: 'More fire rate', detail: '' }
     const selectedData = selected.weaponStats!.fireRate
     const othersData = others.map(({ displayName, weaponStats }) => ({ displayName, data: weaponStats!.fireRate }))
@@ -154,7 +153,7 @@ export class WeaponsAnalysisComponent {
     if(advantage.detail) list.push(advantage)
   }
 
-  checkCost(selected: Weapon, others: Weapon[], list: advantage[]): void {
+  checkCost(selected: Weapon, others: Weapon[], list: WeaponAdvantage[]): void {
     const advantage = { title: 'Cheaper', detail: '' }
     const selectedData = selected.shopData!.cost
     const othersData = others.map(({ displayName, shopData }) => ({ displayName, data: shopData!.cost }))

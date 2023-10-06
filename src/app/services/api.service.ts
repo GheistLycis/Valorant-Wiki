@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { apiLangs } from '../types/apiLangs';
-import { ApiResponse as Res } from '@interfaces/ApiResponse';
+import { apiLangs } from '../types/api-langs.type';
+import { ApiResponse as Res } from '@interfaces/api-response.interface';
 import { map } from 'rxjs';
 
 @Injectable({
