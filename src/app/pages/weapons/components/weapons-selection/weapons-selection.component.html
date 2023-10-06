@@ -6,10 +6,11 @@
             *ngFor="let weapon of $weapons()" 
             (click)="weaponService.removeFromSelection(weapon)" 
             class="weapon-box position-relative d-flex align-items-center h-100 pointer">
-            <img [src]="weapon.displayIcon" class="w-75">
             <h4 class="position-absolute text-black ff-secondary">
                 {{ weapon.displayName }}
             </h4>
+            <img [src]="weapon.displayIcon" class="weapon-img w-75">
+            <img src="assets/icons/trash.svg" width="45px" class="remove-icon position-absolute filter-white">
         </div>
     </div>
 

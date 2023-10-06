@@ -21,6 +21,8 @@
     }
 
     .weapons-list {
+        max-width: 85%;
+        
         .weapon-box {
             opacity: 0;
             width: 300px;
@@ -32,18 +34,32 @@
             &:hover {
                 background-color: rgba($dark-gray, 0.4);
     
-                img {
-                    transform: scale(1.2);
+                .weapon-img {
+                    transform: skew(-20deg) scale(1.2);
+                }
+
+                .remove-icon {
+                    opacity: 1;
                 }
             }
-    
-            img {
-                transition-duration: .2s;
-            }
-    
+
             h4 {
+                transform: skew(-20deg);
                 top: 10px;
                 right: 10px;
+            }
+
+            .weapon-img {
+                transform: skew(-20deg);
+                transition-duration: .2s;
+            }
+
+            .remove-icon {
+                transform: skew(-20deg) translateX(20px);
+                top: 25%;
+                right: 50%;
+                opacity: 0;
+                transition-duration: .2s;
             }
         }
     }
