@@ -128,13 +128,13 @@ export class OverviewChartComponent implements OnChanges {
     data[1] = (data[1] * 100 / maxMagazineSize)
 
     const maxFireRate = weapons.reduce((acc, val) => acc = Math.max(acc, val.weaponStats!.fireRate), 0)
-    data[2] = (data[2] * 100 / maxFireRate)
+    data[2] = 100 - (data[2] * 100 / maxFireRate)
 
     const maxReloadtimeSeconds = weapons.reduce((acc, val) => acc = Math.max(acc, val.weaponStats!.reloadTimeSeconds), 0)
-    data[3] = (data[3] * 100 / maxReloadtimeSeconds)
+    data[3] = 100 - (data[3] * 100 / maxReloadtimeSeconds)
 
     const maxEquipTimeSeconds = weapons.reduce((acc, val) => acc = Math.max(acc, val.weaponStats!.equipTimeSeconds), 0)
-    data[4] = (data[4] * 100 / maxEquipTimeSeconds)
+    data[4] = 100 - (data[4] * 100 / maxEquipTimeSeconds)
 
     return data
   }
