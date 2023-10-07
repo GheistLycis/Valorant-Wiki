@@ -29,11 +29,11 @@ export class SortDirective implements AfterViewInit {
 
     sorting(el: HTMLElement): void {
         const sort = el.getAttribute('sortBy') as SortEvent['sort']
-        let order = el.getAttribute('order') as keyof typeof SortOrder 
+        let order = el.getAttribute('order') as SortEvent['order']
 
         // UPDATING CLICKED ELEMENT
         el.setAttribute('order', SortOrder[order])
-        order = el.getAttribute('order') as keyof typeof SortOrder 
+        order = el.getAttribute('order') as SortEvent['order']
         order ? el.classList.add('active') : el.classList.remove('active')
         
         // UPDATING OTHER ELEMENTS
