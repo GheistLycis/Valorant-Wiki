@@ -2,6 +2,7 @@
 @import 'src/styles/utils';
 
 .agent-card {
+    @include fade-in();
     height: 350px;
 
     &:hover {
@@ -78,11 +79,13 @@
 
     h1 {
         @include slash-effect($white, 30px);
+        @include fade-in(.3s, .2s);
         bottom: 0;
         left: 50%;
     }
 
     .skill-icon {
+        @include fade-in(.1s);
         width: 35px;
         height: 35px;
     }

@@ -3,6 +3,7 @@
 
 .weapon-card {
     @include card(transparent);
+    @include fade-in(.15s);
     height: 250px;
 
     .overlay {

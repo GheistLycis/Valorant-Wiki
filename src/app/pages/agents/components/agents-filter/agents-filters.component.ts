@@ -20,7 +20,7 @@ export class AgentsFiltersComponent {
 
   constructor(private agentService: AgentService) {
     this.$expanded = signal(false)
-    this.agents$ = agentService.list().pipe(tap(v => console.log(v)))
+    this.agents$ = agentService.list()
     this.search$ = new Subject()
     this.selected$ = new Subject()
     this.sort$ = new Subject()
