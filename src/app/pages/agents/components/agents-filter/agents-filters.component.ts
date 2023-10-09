@@ -42,12 +42,12 @@ export class AgentsFiltersComponent {
       map(({ agents, searched, selected, sort }) => agents
         .filter(({ uuid }) => {
           if(selected.length) return selected.includes(uuid)
-          if(searched.length) return searched.includes(uuid)
+          else if(searched.length) return searched.includes(uuid)
           else return true
         })
         .sort((a, b) => {
           if(!sort || sort.order == '') {
-            return a.displayName < b.displayName ? -1 : 1
+            return -1
           }
           else {
             const value = sort.order == 'ASC' ? -1 : 1 

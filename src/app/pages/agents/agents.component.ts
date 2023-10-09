@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Agent } from '@interfaces/agent.interface';
+import { AgentService } from '@services/agent.service';
 
 @Component({
   selector: 'app-agents',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AgentsComponent {
 
+  constructor(public agentService: AgentService) {}
+
+  trackByFn(i: number, agent: Agent): string {
+    return agent.uuid
+  }
 }

@@ -1,0 +1,83 @@
+@import 'src/styles/colors';
+@import 'src/styles/utils';
+
+.agent-card {
+    height: 350px;
+
+    &:hover {
+        .portrait {
+            transform: scale(1.25);
+        }
+
+        &::before {
+            transform: scale(0.8);
+        }
+
+        h2 {
+            &::before,
+            &::after {
+                opacity: 1;
+            }
+    
+            &::before {
+                transform: translateX(-15px);
+            }
+    
+            &::after {
+                transform: translateX(-10px);
+            }
+        }
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 1px;
+        background-color: $white;
+        transform-origin: center;
+    }
+
+    &::before {
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: scale(0.5);
+        transition-duration: .2s;
+    }
+
+    &::after {
+        bottom: 5%;
+        right: -10px;
+        transform: scale(0.4) rotate(-15deg);
+    }
+
+    .background {
+        opacity: 0.15;
+        z-index: -1;
+    }
+
+    .portrait {
+        transform: scale(1.2);
+        transform-origin: bottom;
+        transition-duration: .2s;
+    }
+
+    .role-icon {
+        width: 25px;
+        height: 25px;
+        opacity: 0.2;
+        margin-right: 15px;
+    }
+
+    h2 {
+        @include slash-effect($white, 30px);
+    }
+
+    .skill-icon {
+        width: 35px;
+        height: 35px;
+    }
+}

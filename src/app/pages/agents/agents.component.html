@@ -1,0 +1,25 @@
+<div class="row h-100 d-flex justify-content-around">
+    <ng-container *ngIf="agentService.filteredAgents$ | async as agents">
+        <ng-container *ngIf="agents.length else loading">
+            <div *ngFor="let agent of agents; trackBy: trackByFn" class="agent-card d-flex justify-content-center position-relative col-sm-12 col-md-6 col-lg-4 my-5 py-3 ff-secondary pointer">
+                <img [src]="agent.background" loading="lazy" class="background position-absolute h-100">
+                <div class="d-flex">
+                    <img [src]="agent.fullPortrait" loading="lazy" class="portrait">
+                    <div class="h-100">
+                        <div class="d-flex mb-3">
+                            <img [src]="agent.role.displayIcon" loading="lazy" class="role-icon">
+                            <h2 class="text-uppercase fw-bold">{{ agent.displayName }}</h2>
+                        </div>
+                        <div class="d-flex flex-column gap-10px">
+                            <img *ngFor="let skill of agent.abilities" [src]="skill.displayIcon" loading="lazy" class="skill-icon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-template #loading>
+            <app-loading-spinner></app-loading-spinner>
+        </ng-template>
+    </ng-container>
+</div>

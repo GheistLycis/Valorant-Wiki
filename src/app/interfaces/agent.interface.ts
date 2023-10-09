@@ -11,7 +11,7 @@ export interface Agent {
     fullPortraitV2: string
     killfeedPortrait: string
     background: string
-    backgroundGradientColors: string[]
+    backgroundGradientColors: [string, string, string, string]
     assetPath: string
     isFullPortraitRightFacing: boolean
     isPlayableCharacter: boolean
