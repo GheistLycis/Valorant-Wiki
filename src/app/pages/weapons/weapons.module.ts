@@ -10,6 +10,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { SortDirective } from '@directives/sort.directive';
 import { OverviewChartComponent } from './components/overview-chart/overview-chart.component';
 import { DamageChartComponent } from './components/damage-chart/damage-chart.component';
+import { LoadingSpinnerComponent } from '@components/loading-spinner/loading-spinner.component';
 
 
 
@@ -29,6 +30,7 @@ import { DamageChartComponent } from './components/damage-chart/damage-chart.com
     NgChartsModule,
     NgSelectModule,
     SortDirective,
+    LoadingSpinnerComponent
   ],
   exports: [
     WeaponsSelectionComponent,

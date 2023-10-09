@@ -1,4 +1,4 @@
-import { Component, WritableSignal } from '@angular/core';
+import { Component } from '@angular/core';
 import { Weapon } from '@interfaces/weapon.interface';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { WeaponService } from '@services/weapon.service';
@@ -10,7 +10,6 @@ import { WeaponService } from '@services/weapon.service';
   styleUrls: ['./weapons.component.scss']
 })
 export class WeaponsComponent {
-  $weapons!: WritableSignal<Weapon[] | undefined>
 
   constructor(
     public weaponService: WeaponService,
@@ -18,8 +17,6 @@ export class WeaponsComponent {
   ) {
     carousel.interval = 0
     carousel.showNavigationIndicators = false
-  
-    this.$weapons = weaponService.$filteredWeapons
   }
 
   trackByFn(i: number, weapon: Weapon): string {

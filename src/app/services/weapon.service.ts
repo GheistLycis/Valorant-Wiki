@@ -2,7 +2,7 @@ import { Injectable, WritableSignal, signal } from '@angular/core';
 import { apiLangs } from '../types/api-langs.type';
 import { Weapon } from '@interfaces/weapon.interface';
 import { ApiService } from './api.service';
-import { Observable, iif, of, tap } from 'rxjs';
+import { BehaviorSubject, Observable, iif, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,26 +11,26 @@ export class WeaponService {
   apiEndpoint!: string
   cachedWeapons!: Weapon[]
   $selectedWeapons!: WritableSignal<Weapon[]>
-  $filteredWeapons!: WritableSignal<Weapon[] | undefined>
+  filteredWeapons$!: BehaviorSubject<Weapon[]>
 
   constructor(private api: ApiService) {
     this.apiEndpoint = 'weapons'
     this.cachedWeapons = []
     this.$selectedWeapons = signal([])
-    this.$filteredWeapons = signal(undefined)
+    this.filteredWeapons$ = new BehaviorSubject([] as Weapon[])
   }
 
-  get(id: string, language?: apiLangs): Observable<Weapon> {
+  get(id: string, caching = true, language?: apiLangs): Observable<Weapon> {
     return iif(
-      () => this.cachedWeapons.length > 0,
+      () => caching && this.cachedWeapons.length > 0,
       of(this.cachedWeapons.find(({ uuid }) => uuid == id)!),
       this.api.get<Weapon>(this.apiEndpoint, id, language)
     )
   }
 
-  list(language?: apiLangs): Observable<Weapon[]> {
+  list(caching = true, language?: apiLangs): Observable<Weapon[]> {
     return iif(
-      () => this.cachedWeapons.length > 0,
+      () => caching && this.cachedWeapons.length > 0,
       of(this.cachedWeapons),
       this.api.list<Weapon>(this.apiEndpoint, language).pipe(
         tap(weapons => this.cachedWeapons = weapons),

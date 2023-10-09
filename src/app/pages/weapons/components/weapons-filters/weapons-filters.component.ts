@@ -42,7 +42,7 @@ export class WeaponsFiltersComponent {
       map(({ weapons, searched, selected, sort }) => weapons
         .filter(({ uuid }) => {
           if(selected.length) return selected.includes(uuid)
-          if(searched.length) return searched.includes(uuid)
+          else if(searched.length) return searched.includes(uuid)
           else return true
         })
         .sort((a, b) => {
@@ -72,7 +72,7 @@ export class WeaponsFiltersComponent {
 
     this.filteredWeapons$.pipe(
       takeUntilDestroyed(),
-    ).subscribe(list => weaponService.$filteredWeapons.set(list))
+    ).subscribe(list => weaponService.filteredWeapons$.next(list))
   }
 
   groupByFn(weapon: Weapon): string {

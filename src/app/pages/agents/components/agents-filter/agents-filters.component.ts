@@ -66,7 +66,7 @@ export class AgentsFiltersComponent {
 
     this.filteredAgents$.pipe(
       takeUntilDestroyed(),
-    ).subscribe(list => agentService.$filteredAgents.set(list))
+    ).subscribe(list => agentService.filteredAgents$.next(list))
   }
 
   groupByFn(agent: Agent): string {

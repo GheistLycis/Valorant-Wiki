@@ -1,75 +1,80 @@
 <div class="row h-100">
-    <div *ngIf="$weapons() == undefined" class="w-100 h-100 d-flex justify-content-center align-items-center">
-        <span class="spinner-grow"></span>
-    </div>
-    <div 
-        *ngFor="let weapon of $weapons(); trackBy: trackByFn"
-        class="weapon-card position-relative col-sm-12 col-md-6 col-lg-4 p-2 ff-secondary"
-        [ngClass]="{'pointer': weapon.displayName != 'Melee'}">
-        <div (click)="weaponService.addToSelection(weapon)" class="overlay d-flex flex-column justify-content-between position-absolute p-2 pb-0">
-            <div class="d-flex justify-content-between">
-                <h3 class="text-uppercase">{{ weapon.displayName }}</h3>
-                <div *ngIf="weapon.displayName != 'Melee'" class="info d-flex flex-column justify-content-between gap-10px">
-                    <div>
-                        <h4 class="text-red">
-                            DAMAGE (0 - {{ weapon.weaponStats!.damageRanges[0].rangeEndMeters }}m)
-                        </h4>
-                        <div class="d-flex justify-content-between w-100">
+    <ng-container *ngIf="weaponService.filteredWeapons$ | async as weapons">
+        <ng-container *ngIf="weapons.length else loading">
+            <div 
+                *ngFor="let weapon of weapons; trackBy: trackByFn"
+                class="weapon-card position-relative col-sm-12 col-md-6 col-lg-4 p-2 ff-secondary"
+                [ngClass]="{'pointer': weapon.displayName != 'Melee'}">
+                <div (click)="weaponService.addToSelection(weapon)" class="overlay d-flex flex-column justify-content-between position-absolute p-2 pb-0">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="text-uppercase">{{ weapon.displayName }}</h3>
+                        <div *ngIf="weapon.displayName != 'Melee'" class="info d-flex flex-column justify-content-between gap-10px">
                             <div>
-                                <h4>{{ weapon.weaponStats!.damageRanges[0].headDamage | number:'.2-2' }}</h4>
-                                <h5>HEAD</h5>
+                                <h4 class="text-red">
+                                    DAMAGE (0 - {{ weapon.weaponStats!.damageRanges[0].rangeEndMeters }}m)
+                                </h4>
+                                <div class="d-flex justify-content-between w-100">
+                                    <div>
+                                        <h4>{{ weapon.weaponStats!.damageRanges[0].headDamage | number:'.2-2' }}</h4>
+                                        <h5>HEAD</h5>
+                                    </div>
+                                    <div>
+                                        <h4>{{ weapon.weaponStats!.damageRanges[0].bodyDamage | number:'.2-2' }}</h4>
+                                        <h5>BODY</h5>
+                                    </div>
+                                    <div>
+                                        <h4>{{ weapon.weaponStats!.damageRanges[0].legDamage | number:'.2-2' }}</h4>
+                                        <h5>LEG</h5>
+                                    </div>
+                                </div>
                             </div>
                             <div>
-                                <h4>{{ weapon.weaponStats!.damageRanges[0].bodyDamage | number:'.2-2' }}</h4>
-                                <h5>BODY</h5>
-                            </div>
-                            <div>
-                                <h4>{{ weapon.weaponStats!.damageRanges[0].legDamage | number:'.2-2' }}</h4>
-                                <h5>LEG</h5>
+                                <h4 class="text-red">GENERAL</h4>
+                                <div class="d-flex justify-content-between w-100">
+                                    <div>
+                                        <h4>{{ weapon.category.substring(21) }}</h4>
+                                        <h5>CATEGORY</h5>
+                                    </div>
+                                    <div>
+                                        <h4>{{ weapon.weaponStats!.fireRate }}</h4>
+                                        <h5>FIRE RATE</h5>
+                                    </div>
+                                    <div>
+                                        <h4>{{ weapon.weaponStats!.magazineSize }}</h4>
+                                        <h5>MAGAZINE SIZE</h5>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <h4 class="text-red">GENERAL</h4>
-                        <div class="d-flex justify-content-between w-100">
-                            <div>
-                                <h4>{{ weapon.category.substring(21) }}</h4>
-                                <h5>CATEGORY</h5>
-                            </div>
-                            <div>
-                                <h4>{{ weapon.weaponStats!.fireRate }}</h4>
-                                <h5>FIRE RATE</h5>
-                            </div>
-                            <div>
-                                <h4>{{ weapon.weaponStats!.magazineSize }}</h4>
-                                <h5>MAGAZINE SIZE</h5>
-                            </div>
-                        </div>
+                    <div class="d-flex justify-content-end">
+                        <h3 *ngIf="weapon.displayName != 'Melee'">$ {{ weapon.shopData!.cost }}</h3>
                     </div>
                 </div>
+        
+                <ngb-carousel class="h-100 w-100" [ngClass]="{'selected': weaponService.$selectedWeapons().includes(weapon)}">
+                    <ng-template ngbSlide *ngFor="let skin of weapon.skins; index as i">
+                        <div class="h-100 w-100">
+                            <img 
+                                [src]="skin.displayIcon"
+                                loading="lazy"
+                                class="weapon-img mh-100" 
+                                [class]="weapon.displayName"
+                                [ngClass]="weapon.displayName != 'Melee' ? 'w-75' : 'w-100'">
+                            <h5 class="skin-name position-absolute">
+                                {{ skin.displayName }}
+                            </h5>
+                            <h5 class="skins-count position-absolute">
+                                ({{ i+1 }}/{{ weapon.skins.length }})
+                            </h5>
+                        </div>
+                    </ng-template>
+                </ngb-carousel>
             </div>
-            <div class="d-flex justify-content-end">
-                <h3 *ngIf="weapon.displayName != 'Melee'">$ {{ weapon.shopData!.cost }}</h3>
-            </div>
-        </div>
+        </ng-container>
 
-        <ngb-carousel class="h-100 w-100" [ngClass]="{'selected': weaponService.$selectedWeapons().includes(weapon)}">
-            <ng-template ngbSlide *ngFor="let skin of weapon.skins; index as i">
-                <div class="h-100 w-100">
-                    <img 
-                        [src]="skin.displayIcon"
-                        loading="lazy"
-                        class="weapon-img mh-100" 
-                        [class]="weapon.displayName"
-                        [ngClass]="weapon.displayName != 'Melee' ? 'w-75' : 'w-100'">
-                    <h5 class="skin-name position-absolute">
-                        {{ skin.displayName }}
-                    </h5>
-                    <h5 class="skins-count position-absolute">
-                        ({{ i+1 }}/{{ weapon.skins.length }})
-                    </h5>
-                </div>
-            </ng-template>
-        </ngb-carousel>
-    </div>
+        <ng-template #loading>
+            <app-loading-spinner></app-loading-spinner>
+        </ng-template>
+    </ng-container>
 </div>

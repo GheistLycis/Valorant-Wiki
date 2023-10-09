@@ -35,6 +35,6 @@ import { AgentsModule } from './pages/agents/agents.module';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorsInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
