@@ -13,7 +13,7 @@
             transform: scale(0.8);
         }
 
-        h2 {
+        h1 {
             &::before,
             &::after {
                 opacity: 1;
@@ -55,7 +55,7 @@
     }
 
     .background {
-        opacity: 0.15;
+        opacity: 0.1;
         z-index: -1;
     }
 
@@ -68,12 +68,18 @@
     .role-icon {
         width: 25px;
         height: 25px;
-        opacity: 0.2;
+        opacity: 0.3;
         margin-right: 15px;
     }
 
-    h2 {
+    h3 {
+        opacity: 0.3;
+    }
+
+    h1 {
         @include slash-effect($white, 30px);
+        bottom: 0;
+        left: 50%;
     }
 
     .skill-icon {
