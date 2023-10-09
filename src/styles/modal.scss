@@ -1,0 +1,8 @@
+@import 'src/styles/utils';
+
+
+ngb-modal-window {
+    .modal-content {
+        @include card($black);
+    }
+}

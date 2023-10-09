@@ -5,6 +5,7 @@ import { AgentsFiltersComponent } from './components/agents-filter/agents-filter
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SortDirective } from '@directives/sort.directive';
 import { LoadingSpinnerComponent } from '@components/loading-spinner/loading-spinner.component';
+import { AgentDetailsComponent } from './components/agent-details/agent-details.component';
 
 
 
@@ -12,12 +13,13 @@ import { LoadingSpinnerComponent } from '@components/loading-spinner/loading-spi
   declarations: [
     AgentsComponent,
     AgentsFiltersComponent,
+    AgentDetailsComponent,
   ],
   imports: [
     CommonModule,
     NgSelectModule,
     SortDirective,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
   ],
   exports: [
     AgentsFiltersComponent,

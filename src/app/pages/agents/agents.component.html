@@ -1,7 +1,10 @@
 <div class="row h-100 d-flex justify-content-around">
     <ng-container *ngIf="agentService.filteredAgents$ | async as agents">
         <ng-container *ngIf="agents.length else loading">
-            <div *ngFor="let agent of agents; trackBy: trackByFn" class="agent-card d-flex justify-content-center position-relative col-sm-12 col-md-6 col-lg-4 my-5 py-3 ff-secondary pointer">
+            <div 
+                *ngFor="let agent of agents; trackBy: trackByFn" 
+                (click)="openDetailsModal(agent)"
+                class="agent-card d-flex justify-content-center position-relative col-sm-12 col-md-6 col-lg-4 my-5 py-3 ff-secondary pointer">
                 <img [src]="agent.background" loading="lazy" class="background position-absolute h-100">
                 <div class="d-flex">
                     <img [src]="agent.fullPortrait" loading="lazy" class="portrait">

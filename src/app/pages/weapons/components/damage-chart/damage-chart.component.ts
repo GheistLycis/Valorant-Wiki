@@ -9,7 +9,7 @@ import { ChartData, ChartOptions } from 'chart.js';
   styleUrls: ['./damage-chart.component.scss']
 })
 export class DamageChartComponent implements OnInit {
-  @Input('weapon') weapon!: Weapon
+  @Input() weapon!: Weapon
   data!: ChartData<'line', number[], string>
   options!: ChartOptions<'line'>
 

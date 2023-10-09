@@ -9,7 +9,7 @@ import { ChartData, ChartDataset, ChartOptions } from 'chart.js';
   styleUrls: ['./overview-chart.component.scss']
 })
 export class OverviewChartComponent implements OnChanges {
-  @Input('weapons') weapons!: Weapon[] | null
+  @Input() weapons!: Weapon[] | null
   @Input('selectedWeapons') $selectedWeapons!: WritableSignal<Weapon[]>
   @Input('selectedWeapon') $selectedWeapon!: WritableSignal<Weapon>
   $data!: Signal<ChartData<'radar', number[], string>>
