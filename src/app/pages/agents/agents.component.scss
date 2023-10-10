@@ -6,12 +6,12 @@
     height: 350px;
 
     &:hover {
-        .portrait {
-            transform: scale(1.25);
-        }
-
         &::before {
             transform: scale(0.8);
+        }
+
+        .portrait {
+            transform: scale(1.25);
         }
 
         .details {
