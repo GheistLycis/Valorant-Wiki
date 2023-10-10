@@ -14,18 +14,20 @@
             transform: scale(0.8);
         }
 
-        h1 {
-            &::before,
-            &::after {
-                opacity: 1;
-            }
-    
-            &::before {
-                transform: translateX(-15px);
-            }
-    
-            &::after {
-                transform: translateX(-10px);
+        .details {
+            h1 {
+                &::before,
+                &::after {
+                    opacity: 1;
+                }
+        
+                &::before {
+                    transform: translateX(-15px);
+                }
+        
+                &::after {
+                    transform: translateX(-10px);
+                }
             }
         }
     }
@@ -66,27 +68,29 @@
         transition-duration: .2s;
     }
 
-    .role-icon {
-        width: 25px;
-        height: 25px;
-        opacity: 0.3;
-        margin-right: 15px;
-    }
+    .details {
+        left: 60%;
 
-    h3 {
-        opacity: 0.3;
-    }
-
-    h1 {
-        @include slash-effect($white, 30px);
-        @include fade-in(.3s, .2s);
-        bottom: 0;
-        left: 50%;
-    }
-
-    .skill-icon {
-        @include fade-in(.1s);
-        width: 35px;
-        height: 35px;
+        .role-icon {
+            width: 25px;
+            height: 25px;
+            opacity: 0.3;
+            margin-right: 15px;
+        }
+    
+        h3 {
+            opacity: 0.3;
+        }
+    
+        h1 {
+            @include slash-effect($white, 30px);
+            @include fade-in(.3s, .2s);
+        }
+    
+        .skill-icon {
+            @include fade-in(.1s);
+            width: 35px;
+            height: 35px;
+        }
     }
 }
