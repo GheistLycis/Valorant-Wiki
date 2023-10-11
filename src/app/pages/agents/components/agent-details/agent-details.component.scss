@@ -11,9 +11,10 @@
         z-index: 1;
         left: 0;
         bottom: 10%;
-        max-width: 45%;
+        max-width: 55%;
         transform: scale(1.1);
         transform-origin: center;
+        transition-duration: .4s;
     }
 
     .agent-icon {
@@ -26,6 +27,7 @@
         margin-left: 20%;
         padding-left: 25% !important;
         padding-bottom: 150px;
+        transition-duration: .6s;
 
         h4,
         span {
