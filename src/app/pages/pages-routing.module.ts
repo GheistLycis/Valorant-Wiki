@@ -2,14 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AgentsComponent } from '../pages/agents/agents.component';
 import { WeaponsComponent } from '../pages/weapons/weapons.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { MapsComponent } from './maps/maps.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/agents',
-    pathMatch: 'full'
-  },
   {
     path: 'agents',
     component: AgentsComponent,
@@ -18,9 +13,14 @@ const routes: Routes = [
     path: 'weapons',
     component: WeaponsComponent,
   },
-  { 
-    path: '**', 
-    component: NotFoundComponent
+  {
+    path: 'maps',
+    component: MapsComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '/agents',
+    pathMatch: 'full'
   },
 ]
 
