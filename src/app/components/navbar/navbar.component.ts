@@ -30,7 +30,7 @@ export class NavbarComponent implements AfterViewInit {
 
         items.forEach(item => {
           if(item.nativeElement != nativeElement) {
-            item.nativeElement.style.opacity = '0.3'
+            item.nativeElement.style.opacity = '.3'
           }
         })
       })

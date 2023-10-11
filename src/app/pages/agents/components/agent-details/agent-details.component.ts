@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Agent } from '@interfaces/agent.interface';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -7,12 +7,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './agent-details.component.html',
   styleUrls: ['./agent-details.component.scss']
 })
-export class AgentDetailsComponent implements OnInit {
+export class AgentDetailsComponent {
   @Input() agent!: Agent
+  activeSkill?: Agent['abilities'][0]
 
-  constructor(private activeModal: NgbActiveModal) {}
-
-  ngOnInit(): void {
-
-  }
+  constructor(public activeModal: NgbActiveModal) {}
 }

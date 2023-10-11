@@ -27,12 +27,12 @@
             opacity: 0;
             width: 300px;
             transform: skew(20deg);
-            background-color: rgba($dark-gray, 0.2);
+            background-color: rgba($dark-gray, .2);
             transition-duration: .3s;
             animation: fade-in .4s forwards;
     
             &:hover {
-                background-color: rgba($dark-gray, 0.4);
+                background-color: rgba($dark-gray, .4);
     
                 .weapon-img {
                     transform: skew(-20deg) scale(1.2);
@@ -87,7 +87,7 @@
 
             &:disabled {
                 img {
-                    opacity: 0.5;
+                    opacity: .5;
                 }
             }
 

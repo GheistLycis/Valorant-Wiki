@@ -24,11 +24,11 @@ ng-select {
     }
 
     .ng-optgroup {
-        background-color: rgba($light-red, 0.2) !important;
+        background-color: rgba($light-red, .2) !important;
         transition-duration: .2s;
 
         &:hover {
-            background-color: rgba($dark-red, 0.2) !important;
+            background-color: rgba($dark-red, .2) !important;
         }
     }
 
@@ -36,11 +36,11 @@ ng-select {
         transition-duration: .2s;
         
         &:hover {
-            background-color: rgba($light-red, 0.2) !important;
+            background-color: rgba($light-red, .2) !important;
         }
 
         &.ng-option-selected {
-            background-color: rgba($dark-red, 0.2) !important;
+            background-color: rgba($dark-red, .2) !important;
         }
     }
 }

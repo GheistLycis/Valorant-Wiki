@@ -56,7 +56,7 @@ export class DamageChartComponent implements OnInit {
       },
       elements: {
         line: {
-          tension: 0.3,
+          tension: .3,
         },
         point: {
           radius: 10,
@@ -100,19 +100,19 @@ export class DamageChartComponent implements OnInit {
         {
           label: 'Head',
           data: damageRanges.map(range =>  range.headDamage),
-          borderColor: `rgba(200, 0, 0, 0.4)`,
+          borderColor: `rgba(200, 0, 0, .4)`,
           pointBackgroundColor: `rgb(200, 0, 0)`,
         },
         {
           label: 'Body',
           data: damageRanges.map(range => range.bodyDamage),
-          borderColor: `rgba(220, 80, 0, 0.5)`,
+          borderColor: `rgba(220, 80, 0, .5)`,
           pointBackgroundColor: `rgb(220, 80, 0)`,
         },
         {
           label: 'Leg',
           data: damageRanges.map(range => range.legDamage),
-          borderColor: `rgba(200, 200, 0, 0.6)`,
+          borderColor: `rgba(200, 200, 0, .6)`,
           pointBackgroundColor: `rgb(200, 200, 0)`,
         },
       ]

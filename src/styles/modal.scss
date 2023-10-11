@@ -3,6 +3,27 @@
 
 ngb-modal-window {
     .modal-content {
-        @include card($black);
+        @include card();
+        @include glass($black, .8, 5px);
+        max-height: 85vh;
+        padding: 15px;
+
+        .close {
+            float: right;
+            cursor: pointer;
+            
+            &::after {
+                content: url('../assets/icons/cross.svg');
+                width: 40px;
+                filter: $filter-white;
+                transition-duration: .15s;
+            }
+
+            &:hover {
+                &::after {
+                    filter: $filter-red;
+                }
+            }
+        }
     }
 }

@@ -20,7 +20,7 @@ export class OverviewChartComponent implements OnChanges {
       elements: {
         line: {
           borderWidth: 3,
-          tension: 0.3,
+          tension: .3,
         },
         point: {
           borderWidth: 0,
@@ -34,7 +34,7 @@ export class OverviewChartComponent implements OnChanges {
           },
           ticks: {
             backdropColor: 'transparent',
-            color: 'rgba(0, 0, 0, 0.5)',
+            color: 'rgba(0, 0, 0, .5)',
           },
           pointLabels: {
             color: palette['dark-gray'],
@@ -104,7 +104,7 @@ export class OverviewChartComponent implements OnChanges {
           label: displayName,
           data: this.getScorePoints(weaponStats, shopData),
           order: uuid == this.$selectedWeapon().uuid ? 0 : 1,
-          backgroundColor: `rgba(${color}, 0.8)`,
+          backgroundColor: `rgba(${color}, .8)`,
           borderColor: `rgba(${color}, 1)`,
           pointBackgroundColor: `rgba(${color}, 1)`,
         }

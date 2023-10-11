@@ -3,7 +3,7 @@
 $footer-height: 50px;
 
 footer {
-    background: linear-gradient(90deg, rgba(transparent, 0.5) 30%, rgba($red, 0.8) 100%);
+    background: linear-gradient(90deg, rgba(transparent, .5) 30%, rgba($red, .8) 100%);
     height: $footer-height;
     width: 120%;
     transition-duration: .4s;
@@ -31,7 +31,7 @@ footer {
         &:hover {
             &::before {
                 transform: translateX(-5px) scale(1) skew(-20deg);
-                opacity: 0.9;
+                opacity: .9;
             }
 
             svg {

@@ -4,18 +4,18 @@
 $nav-height: 40px;
 
 nav {
-    @include glass($light-gray, 0.1, 2px);
+    @include glass($light-gray, .1, 2px);
     height: $nav-height;
     border: 1px solid $dark-red;
-    box-shadow: 0 0 5px 5px rgba($dark-red, 0.4);
+    box-shadow: 0 0 5px 5px rgba($dark-red, .4);
     font-size: 20px;
     letter-spacing: 1.5px;
     transition-duration: .2s;
 
     &:hover {
-        @include glass($light-gray, 0.1, 4px);
+        @include glass($light-gray, .1, 4px);
         height: $nav-height + 10px;
-        box-shadow: 0 0 10px 15px rgba($dark-red, 0.8);
+        box-shadow: 0 0 10px 15px rgba($dark-red, .8);
     }
 
     img {
@@ -39,7 +39,7 @@ nav {
     .seeking-box {
         width: 100px;
         transform: skew(-30deg);
-        background-color: rgba($black, 0.5);
+        background-color: rgba($black, .5);
         z-index: -1;
         left: 90vw;
         transition: height .2s, left .5s;
