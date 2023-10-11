@@ -6,6 +6,13 @@
     background: linear-gradient(120deg, transparent 20%, $red 80%);
     height: 100%;
     margin: 15px;
+
+    .background {
+        max-width: 40%;
+        left: 0;
+        top: 0;
+        animation: pulse infinite 1s;
+    }
     
     .portrait {
         z-index: 1;
@@ -55,5 +62,29 @@
                 transform: translateY(0);
             }
         }
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: .5;
+    }
+    10% {
+        opacity: .4;
+    }
+    20% {
+        opacity: .35;
+    }
+    30% {
+        opacity: .3;
+    }
+    80% {
+        opacity: .3;
+    }
+    90% {
+        opacity: .5;
+    }
+    100% {
+        opacity: .6;
     }
 }
