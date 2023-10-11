@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, DestroyRef, ElementRef, Input, ViewChild, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Agent } from '@interfaces/agent.interface';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { fromEvent, throttleTime } from 'rxjs';
@@ -12,6 +13,7 @@ export class AgentDetailsComponent implements AfterViewInit {
   @ViewChild('portrait') portrait!: ElementRef<HTMLImageElement>
   @ViewChild('info') info!: ElementRef<HTMLDivElement>
   @Input() agent!: Agent
+  destroyRef = inject(DestroyRef)
   activeSkill?: Agent['abilities'][0]
   portraitOffset!: { x: string, y: string }
   infoOffset!: { x: string, y: string }
@@ -24,17 +26,18 @@ export class AgentDetailsComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     const { innerWidth, innerHeight } = window
     function withinBounds (point: number, bounds: number) {
-      return point > .1*bounds && point < .9*bounds
+      return (point > .1*bounds) && (point < .9*bounds)
     } 
     function getOffset (point: number, bounds: number, multi = 1, direction: 1 | -1 = 1) {
-      return direction*(40*multi)*((point / bounds) - .5) + 'px'
+      return multi*direction*40*((point / bounds) - .5) + 'px'
     } 
 
     fromEvent<MouseEvent>(document, 'mousemove').pipe(
-      throttleTime(33.3), // 30fps animation
+      takeUntilDestroyed(this.destroyRef),
+      throttleTime(33.3), // 30fps
     ).subscribe((({ clientX, clientY }) => {
       if(withinBounds(clientX, innerWidth)) {
-        this.portraitOffset.x = getOffset(clientX, innerWidth, 1.5, 1)
+        this.portraitOffset.x = getOffset(clientX, innerWidth, 1.5)
         this.infoOffset.x = getOffset(clientX, innerWidth, 0.5, -1)
       }
       if(withinBounds(clientY, innerHeight)) {
